@@ -1,0 +1,6 @@
+[book]
+authors = ["adrien1212"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Créer une application d'entreprise avec Spring"
