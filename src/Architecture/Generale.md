@@ -1,11 +1,11 @@
 # Architecture Générale
 
-Le diagramme suivant représente l'architecture qu'on souhaite mettre en place
-- Un microservice pour les transactions
-- Un microservice pour la gestion du compte bancaire
-- Un microservice pour l'authentification
-- Une Gateway
+Nous optons pour une architectecure en microservices où chaque service peut être deployé séparément et dispose de sa propre base de données.
+
+Chaque service reprendra le même fonctionnement :
+- Un service représentant le comtpe bancaire d'un client.
+- Un service permettant l'authentification d'un client
+- Un dernier service gérant la communication vers les deux autres microservices.
 
 ![](Images/archi_generale.png)
 
-Chaque microservice dispose ensuite de sa propre API que nous détaillerons dans les chapitres suivants.

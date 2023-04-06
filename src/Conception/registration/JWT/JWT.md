@@ -19,9 +19,16 @@ Voici comment se déroule l'authentification avec JWT entre un client et un serv
 Nous avons donc deux étapes biens distincte, ce qui va impacté la rédaction (ou plutot le fonctionnement) de notre code.
 
 ## Evolution de l'architecture
-1. Nous avons crée une architecture où la chaine de sécurité ne sert pas à assurer l'authentification. En effet, nous créons manuellement dans la méthode `login()` l'objet `Authorisation` que nous passons manuellement à `AuthenticationManager` et au `SecurityContext`
-2. Dans le paragraphe sur la mise en garde, nous avons vu qu'on pouvait rajouter des filtres qui assure en interne les étapes décrites précédement.
-3. Nous allons reprendre le même principe mais pour les token JWT
+1. Dans la première architecture :
+   - L'authentification était assurée par la méthode `login()`
+   - La chaine de sécurité vérifiée si l'utilisateur était contenu dans le `SecurityContext` et si aucune exception n'était levée, alors l'utilisateur pouvait accéder à `/restricted`
+2. Avec l'authentification via *Basic* :
+   - Nous n'avons plus besoin de la méthode `login()`
+   - L'utilisateur doit fournir ces identifiants à chaque appel
+   - La *Security Filter Chain* avec `BasicAuthenticationFilter` autorisée ou non l'accès à la ressource protégée.
+3. Avec l'authentification via *JWT*
+   - Nous avons besoin d'une méthode `login()` pour founir un JWT token
+   - Nous avons besoin de créer notre propre filtre pour vérifier si le token fourni par l'utilisateur est valide 
 
 
 ### Architecture
@@ -29,9 +36,9 @@ Nous avons donc deux étapes biens distincte, ce qui va impacté la rédaction (
 ![](Images/../../Images/SpringSecurityArchiJWT.png)
 
 ### Particularité
-Il faut distinguer deux types de requête :
+Il faut distinguer deux types de requêtes :
 - Toutes les requêtes (e.g. `/restricted`)
-- La requeête de demande de connexion `/auth/login`
+- La requête de demande de connexion `/auth/login`
 
 
 **Toutes requêtes**  

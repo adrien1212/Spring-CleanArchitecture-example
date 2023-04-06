@@ -1,0 +1,1678 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Créer une application d&#x27;entreprise avec Spring</title>
+        <meta name="robots" content="noindex" />
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="Introduction/Introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Architecture</li><li class="chapter-item expanded "><a href="Architecture/Generale.html"><strong aria-hidden="true">2.</strong> Architecture Générale</a></li><li class="chapter-item expanded "><a href="Configuration/Configuration.html"><strong aria-hidden="true">3.</strong> Configuration MicroServices</a></li><li class="chapter-item expanded "><a href="Architecture/Microservice.html"><strong aria-hidden="true">4.</strong> Architecture Détaillée</a></li><li class="chapter-item expanded affix "><li class="part-title">Compte bancaire</li><li class="chapter-item expanded "><a href="Conception/bankaccount/Introduction.html"><strong aria-hidden="true">5.</strong> BankAccount</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="Conception/bankaccount/Configuration.html"><strong aria-hidden="true">5.1.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="Conception/bankaccount/Architecture.html"><strong aria-hidden="true">5.2.</strong> Architecture</a></li><li class="chapter-item expanded "><a href="Conception/bankaccount/Domaine.html"><strong aria-hidden="true">5.3.</strong> Domaine</a></li><li class="chapter-item expanded "><a href="Conception/bankaccount/Service.html"><strong aria-hidden="true">5.4.</strong> Service</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="Conception/bankaccount/Service/DTO.html"><strong aria-hidden="true">5.4.1.</strong> DTO</a></li><li class="chapter-item expanded "><a href="Conception/bankaccount/Service/BDD.html"><strong aria-hidden="true">5.4.2.</strong> Base de données</a></li><li class="chapter-item expanded "><a href="Conception/bankaccount/Service/Business.html"><strong aria-hidden="true">5.4.3.</strong> Service Métier</a></li></ol></li><li class="chapter-item expanded "><a href="Conception/bankaccount/Controller.html"><strong aria-hidden="true">5.5.</strong> Contrôleur</a></li><li class="chapter-item expanded "><a href="Conception/bankaccount/Tester.html"><strong aria-hidden="true">5.6.</strong> Tester</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Authentification</li><li class="chapter-item expanded "><a href="Conception/registration/Introduction.html"><strong aria-hidden="true">6.</strong> Authentification</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="Conception/registration/Configuration.html"><strong aria-hidden="true">6.1.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="Conception/registration/Architecture.html"><strong aria-hidden="true">6.2.</strong> Architecture</a></li><li class="chapter-item expanded "><a href="Conception/registration/Domaine.html"><strong aria-hidden="true">6.3.</strong> Domaine</a></li><li class="chapter-item expanded "><a href="Conception/registration/Service.html"><strong aria-hidden="true">6.4.</strong> Service</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="Conception/registration/Service/DTO.html"><strong aria-hidden="true">6.4.1.</strong> DTO</a></li><li class="chapter-item expanded "><a href="Conception/registration/Service/BDD.html"><strong aria-hidden="true">6.4.2.</strong> Base de données</a></li><li class="chapter-item expanded "><a href="Conception/registration/Service/Business.html"><strong aria-hidden="true">6.4.3.</strong> Service Métier</a></li></ol></li><li class="chapter-item expanded "><a href="Conception/registration/Security/Securite.html"><strong aria-hidden="true">6.5.</strong> Sécurité</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="Conception/registration/Security/SpringSecurityArchitecture.html"><strong aria-hidden="true">6.5.1.</strong> Architecture Spring Security</a></li><li class="chapter-item expanded "><a href="Conception/registration/Security/SpringConfiguration.html"><strong aria-hidden="true">6.5.2.</strong> Implémentation Architecture</a></li><li class="chapter-item expanded "><a href="Conception/registration/Security/UserDetailService.html"><strong aria-hidden="true">6.5.3.</strong> Notion d'utilisateur Spring</a></li><li class="chapter-item expanded "><a href="Conception/registration/Controller.html"><strong aria-hidden="true">6.5.4.</strong> Contrôleur</a></li><li class="chapter-item expanded "><a href="Conception/registration/Tester.html"><strong aria-hidden="true">6.5.5.</strong> Tester</a></li></ol></li><li class="chapter-item expanded "><a href="Conception/registration/Basic/Basic.html"><strong aria-hidden="true">6.6.</strong> Authentification Basic</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="Conception/registration/Basic/SecurityConfig.html"><strong aria-hidden="true">6.6.1.</strong> SecurityConfig</a></li><li class="chapter-item expanded "><a href="Conception/registration/Basic/Controleur.html"><strong aria-hidden="true">6.6.2.</strong> Controleur</a></li></ol></li><li class="chapter-item expanded "><a href="Conception/registration/JWT/JWT.html"><strong aria-hidden="true">6.7.</strong> Authentification JWT</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="Conception/registration/JWT/Configuration.html"><strong aria-hidden="true">6.7.1.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="Conception/registration/JWT/generate.html"><strong aria-hidden="true">6.7.2.</strong> Generer token</a></li><li class="chapter-item expanded "><a href="Conception/registration/JWT/filter.html"><strong aria-hidden="true">6.7.3.</strong> JWTAuthenticationFilter</a></li><li class="chapter-item expanded "><a href="Conception/registration/JWT/Controller.html"><strong aria-hidden="true">6.7.4.</strong> Controleur</a></li></ol></li><li class="chapter-item expanded "><a href="Conception/registration/Conclusion.html"><strong aria-hidden="true">6.8.</strong> Conclusion</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Gateway</li><li class="chapter-item expanded "><a href="Conception/gateway/Introduction.html"><strong aria-hidden="true">7.</strong> Gateway</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="Conception/gateway/Configuration.html"><strong aria-hidden="true">7.1.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="Conception/gateway/Tester.html"><strong aria-hidden="true">7.2.</strong> Tester</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Créer une application d&#x27;entreprise avec Spring</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<p>Le framework Spring permet de créer des applications d'entreprises. Dans ce cours nous allons voir comment l'exploiter à travers deux extensions majeures Spring Boot et Spring Security.
+Premièrement, Spring Boot facilite la création d'applications autonomes prêtes à l'emploi avec un minimum de configuration. Puis Spring Security qui fournit l'authentification, l'autorisation et d'autres fonctionnalités de sécurité pour les applications d'entreprise. </p>
+<h2 id="plan-du-cours"><a class="header" href="#plan-du-cours">Plan du cours</a></h2>
+<ol>
+<li>Présentation de l'architecture mise en place</li>
+<li>Création du service <em>compte bancaire</em> avec Spring Boot</li>
+<li>Création du service <em>d'authentification</em> avec Spring Security
+<ol>
+<li>Explication générale</li>
+<li>Authentification Basic</li>
+<li>Authentification JWT</li>
+</ol>
+</li>
+</ol>
+<p><strong>Disclaimer</strong></p>
+<blockquote>
+<p>Ce tutoriel se concentre sur la mise en œuvre et la réalisation efficace d'une application Spring avec Spring Security. Nous ne fournirons pas de détails approfondis sur le fonctionnement interne de Spring. Pour toute compréhension approfondie de Spring, nous vous encourageons à effectuer des recherches personnelles.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="architecture-générale"><a class="header" href="#architecture-générale">Architecture Générale</a></h1>
+<p>Nous optons pour une architectecure en microservices où chaque service peut être deployé séparément et dispose de sa propre base de données.</p>
+<p>Chaque service reprendra le même fonctionnement :</p>
+<ul>
+<li>Un service représentant le comtpe bancaire d'un client.</li>
+<li>Un service permettant l'authentification d'un client</li>
+<li>Un dernier service gérant la communication vers les deux autres microservices.</li>
+</ul>
+<p><img src="Architecture/Images/archi_generale.png" alt="" /></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="configuration-en-microservice"><a class="header" href="#configuration-en-microservice">Configuration en MicroService</a></h1>
+<p>Nous utiliserons Maven pour gérer nos services et les librairies externes utilisées.</p>
+<h2 id="découpage-du-projet"><a class="header" href="#découpage-du-projet">Découpage du projet</a></h2>
+<p>Comme evoqué quand le chapitre précédent nous allons déployer 3 microservices. Cela signifie donc 3 projets Maven indépendants. Cependant afin de faciliter l'utilisation des librairies nous allons regrouper ces 3 projets sous un projet parent <code>prixbanque</code></p>
+<h2 id="pom-parent"><a class="header" href="#pom-parent">POM parent</a></h2>
+<h3 id="propriétés"><a class="header" href="#propriétés">Propriétés</a></h3>
+<pre><code class="language-XML">&lt;properties&gt;
+    &lt;microservice.version&gt;0.0.1-SNAPSHOT&lt;/microservice.version&gt;
+    &lt;java.version&gt;17&lt;/java.version&gt;
+    &lt;maven.compiler.source&gt;17&lt;/maven.compiler.source&gt;
+    &lt;maven.compiler.target&gt;17&lt;/maven.compiler.target&gt;
+    &lt;spring.boot.dependencies.version&gt;2.7.4&lt;/spring.boot.dependencies.version&gt;
+&lt;/properties&gt;
+</code></pre>
+<h3 id="microservice"><a class="header" href="#microservice">Microservice</a></h3>
+<p>Le pom parent déclare également les 3 microservices que nous allons développer ultérieurement.</p>
+<pre><code class="language-XML">&lt;modules&gt;
+    &lt;module&gt;bankaccount&lt;/module&gt;
+    &lt;module&gt;registration&lt;/module&gt;
+    &lt;module&gt;gateway&lt;/module&gt;
+&lt;/modules&gt;
+</code></pre>
+<p>On doit également ajouter ces modules comme dépendance du projet. Ainsi dans le bloc <code>&lt;dependencyManagement&gt;&lt;/dependencyManagement&gt;</code> nous rajoutons</p>
+<pre><code class="language-XML">&lt;!-- MicroServices--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;adriencaubel.fr&lt;/groupId&gt;
+    &lt;artifactId&gt;registration&lt;/artifactId&gt;
+    &lt;version&gt;${microservice.version}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;adriencaubel.fr&lt;/groupId&gt;
+    &lt;artifactId&gt;connection&lt;/artifactId&gt;
+    &lt;version&gt;${microservice.version}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;adriencaubel.fr&lt;/groupId&gt;
+    &lt;artifactId&gt;banktransfert&lt;/artifactId&gt;
+    &lt;version&gt;${microservice.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3 id="les-autres-dépendances"><a class="header" href="#les-autres-dépendances">Les autres dépendances</a></h3>
+<pre><code class="language-XML">&lt;!-- Microservice --&gt;
+...
+
+&lt;!-- Spring --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-data-jpa&lt;/artifactId&gt;
+    &lt;version&gt;${spring.boot.dependencies.version}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+    &lt;version&gt;${spring.boot.dependencies.version}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+    &lt;version&gt;${spring.boot.dependencies.version}&lt;/version&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-security&lt;/artifactId&gt;
+    &lt;version&gt;${spring.boot.dependencies.version}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-cloud-starter-gateway&lt;/artifactId&gt;
+    &lt;version&gt;3.1.4&lt;/version&gt;
+&lt;/dependency&gt;
+
+
+&lt;!-- Base de données --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;javax.xml.bind&lt;/groupId&gt;
+    &lt;artifactId&gt;jaxb-api&lt;/artifactId&gt;
+    &lt;version&gt;2.3.1&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.postgresql&lt;/groupId&gt;
+    &lt;artifactId&gt;postgresql&lt;/artifactId&gt;
+    &lt;version&gt;42.5.0&lt;/version&gt;
+    &lt;scope&gt;runtime&lt;/scope&gt;
+&lt;/dependency&gt;
+
+&lt;!-- Utility --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+    &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+    &lt;version&gt;1.18.24&lt;/version&gt;
+    &lt;scope&gt;provided&lt;/scope&gt;
+&lt;/dependency&gt;
+
+&lt;!-- Tests --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.junit.jupiter&lt;/groupId&gt;
+    &lt;artifactId&gt;junit-jupiter-engine&lt;/artifactId&gt;
+    &lt;version&gt;5.9.1&lt;/version&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.junit.jupiter&lt;/groupId&gt;
+    &lt;artifactId&gt;junit-jupiter-api&lt;/artifactId&gt;
+    &lt;version&gt;5.9.1&lt;/version&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.junit.platform&lt;/groupId&gt;
+    &lt;artifactId&gt;junit-platform-runner&lt;/artifactId&gt;
+    &lt;version&gt;1.9.1&lt;/version&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3 id="le-build"><a class="header" href="#le-build">Le build</a></h3>
+<pre><code class="language-XML">&lt;build&gt;
+    &lt;plugins&gt;
+        &lt;plugin&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+            &lt;version&gt;${spring.boot.dependencies.version}&lt;/version&gt;
+        &lt;/plugin&gt;
+    &lt;/plugins&gt;
+&lt;/build&gt;
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="architecture-dun-microservice"><a class="header" href="#architecture-dun-microservice">Architecture d'un microservice</a></h1>
+<p>Nous avons évoqué l'architecture générale de notre application. Maintenant nous nous intéressons à l'architecture au sein d'un service. Nous une architecture par couche (layer) appelée <em>Clean Architecture</em>. </p>
+<blockquote>
+<p>La Clean Architecture met l'accent sur la séparation des préoccupations et sur la dépendance des couches internes du système sur les couches externes. Elle favorise également l'indépendance des frameworks, des bibliothèques et des outils externes.</p>
+</blockquote>
+<blockquote>
+<p>Elle rend les systèmes logiciels maintenables, évolutifs et testables en isolant les détails d'implémentation dans les couches internes et en favorisant l'indépendance des couches externes.</p>
+</blockquote>
+<p><a href="https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html">https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
+</a></p>
+<h2 id="brève-introduction"><a class="header" href="#brève-introduction">Brève introduction</a></h2>
+<p><img src="Architecture/Images/CleanArchitecture.png" alt="" /></p>
+<h3 id="entités"><a class="header" href="#entités">Entités</a></h3>
+<p>L'entité ne dépend de rien, sauf éventuellement d'autres entités. Elle contient des données (état) et une logique réutilisables pour diverses applications. Elles sont le cœur de notre application.</p>
+<h3 id="cas-dutililisation"><a class="header" href="#cas-dutililisation">Cas d'utililisation</a></h3>
+<p>Les cas d'utilisation interagissent avec les entités (dépendent d'elles) et détiennent la logique de l'application spécifique. Les UseCase peuvent être lié à des librairies. Par exemple avec une couche d'accès aux données</p>
+<p>Dans notre application, le diagramme BPMN nous permet d'identifier facilement quels seront ces cas d'utilisation</p>
+<h3 id="adaptateurs"><a class="header" href="#adaptateurs">Adaptateurs</a></h3>
+<p>La couche d'adaptateur est une couche qui sert d'interface entre la logique métier (domaine) et les frameworks ou technologies externes tels que les bases de données, les services web, les systèmes de messagerie, accès aux bases de données, etc. Elle a pour rôle de traduire les données provenant de ces sources externes vers un format que la logique métier peut comprendre et utiliser, et vice versa.</p>
+<p><a href="https://refactoring.guru/fr/design-patterns/adapter">https://refactoring.guru/fr/design-patterns/adapter
+</a></p>
+<h3 id="librairies"><a class="header" href="#librairies">Librairies</a></h3>
+<p>Le cœur de l'application doit être indépendant des points d'entrée et des points de sortie (les librairies). En effet, si un framework ou une technologie externe ne répond plus aux besoins du système, il peut être remplacé facilement sans impacter la logique métier.</p>
+<h2 id="exemple"><a class="header" href="#exemple">Exemple</a></h2>
+<p>Chaque service suivra la même architecture que ci-dessous. Nous reviendrons en détail sur leur implémentation dans les chapitres suivants.</p>
+<p><img src="Architecture/Images/springArchi.drawio.png" alt="" /></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="introduction-1"><a class="header" href="#introduction-1">Introduction</a></h1>
+<p>Ce module est dédié à la gestion d'un compte bancaire. Nous distinguons la notion de <em>compte bancaire</em> et <em>d'utilisateur</em>, un utilisateurs peut posséder plusieurs compte bancaire.</p>
+<h2 id="analyse-du-besoin"><a class="header" href="#analyse-du-besoin">Analyse du besoin</a></h2>
+<p>Dans notre application un compte bancaire se traduit par les actions suivantes :</p>
+<ul>
+<li>Créer le compte bancaire pour un utilisateur</li>
+<li>Mettre à jour le compte</li>
+<li>Supprimer le compte bancaire</li>
+<li>Consulter son compte bancaire</li>
+<li>Afficher tous ses comptes bancaires</li>
+</ul>
+<p>Nous rajoutons également quelques règles concernant les comptes bancaires :</p>
+<ul>
+<li>Un compte bancaire peut être du type <code>CHEQUE</code> ou <code>EPARGNE</code></li>
+<li>Un compte bancaire porte un nom (e.g. <em>compte principale</em>)</li>
+<li>Un compte bancaire à une <code>Balance</code></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="configuration"><a class="header" href="#configuration">Configuration</a></h1>
+<p>Nous avons besoin des dépendances Spring suivantes :</p>
+<ul>
+<li>Spring Boot</li>
+<li>Spring Web</li>
+<li>Spring Data JPA</li>
+</ul>
+<h2 id="pom"><a class="header" href="#pom">Pom</a></h2>
+<pre><code class="language-XML">&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+	&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+	&lt;parent&gt;
+		&lt;groupId&gt;uqac.groupe6&lt;/groupId&gt;
+		&lt;artifactId&gt;prixbanque&lt;/artifactId&gt;
+		&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+	&lt;/parent&gt;
+	&lt;artifactId&gt;bankaccount&lt;/artifactId&gt;
+
+
+	&lt;dependencies&gt;
+		&lt;!-- Spring --&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-boot-starter-data-jpa&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+			&lt;scope&gt;test&lt;/scope&gt;
+		&lt;/dependency&gt;
+
+
+		&lt;!-- Base de données --&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;javax.xml.bind&lt;/groupId&gt;
+			&lt;artifactId&gt;jaxb-api&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.postgresql&lt;/groupId&gt;
+			&lt;artifactId&gt;postgresql&lt;/artifactId&gt;
+			&lt;scope&gt;runtime&lt;/scope&gt;
+		&lt;/dependency&gt;
+
+		&lt;!-- Utility --&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+			&lt;artifactId&gt;lombok&lt;/artifactId&gt;
+			&lt;scope&gt;provided&lt;/scope&gt;
+		&lt;/dependency&gt;
+	&lt;/dependencies&gt;
+
+
+	&lt;build&gt;
+		&lt;plugins&gt;
+			&lt;plugin&gt;
+				&lt;artifactId&gt;maven-assembly-plugin&lt;/artifactId&gt;
+				&lt;configuration&gt;
+					&lt;archive&gt;
+						&lt;manifest&gt;
+							&lt;mainClass&gt;uqac.groupe6.bankaccount.BankAccountApplication&lt;/mainClass&gt;
+						&lt;/manifest&gt;
+					&lt;/archive&gt;
+					&lt;descriptorRefs&gt;
+						&lt;descriptorRef&gt;jar-with-dependencies&lt;/descriptorRef&gt;
+					&lt;/descriptorRefs&gt;
+				&lt;/configuration&gt;
+				&lt;executions&gt;
+					&lt;execution&gt;
+						&lt;id&gt;make-assembly&lt;/id&gt; &lt;!-- this is used for inheritance merges --&gt;
+						&lt;phase&gt;package&lt;/phase&gt; &lt;!-- bind to the packaging phase --&gt;
+						&lt;goals&gt;
+							&lt;goal&gt;single&lt;/goal&gt;
+						&lt;/goals&gt;
+					&lt;/execution&gt;
+				&lt;/executions&gt;
+			&lt;/plugin&gt;
+		&lt;/plugins&gt;
+	&lt;/build&gt;
+
+
+&lt;/project&gt;
+</code></pre>
+<h2 id="applicationproperties"><a class="header" href="#applicationproperties">Application.properties</a></h2>
+<p>Dans le fichier <code>src/main/resources/application.properties</code></p>
+<ul>
+<li>On spécifie le port sur lequel l'application doit être déployée</li>
+<li>On spécifie l'ensemble des informations pour accéder au services de gestion de base de données</li>
+</ul>
+<pre><code class="language-properties"># Server configuration
+server.port=8081
+
+#PostgreSQL Configuration
+spring.datasource.url=jdbc:postgresql://localhost:5432/account
+spring.datasource.username=postgres
+spring.datasource.password=postgres
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQL81Dialect
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="architecture"><a class="header" href="#architecture">Architecture</a></h1>
+<p>Nous utilisons la <em>Clean Architecture</em> pour développer notre application. Nous obtenons ainsi le diagramme de classe simplifié suivant.</p>
+<p><img src="Conception/bankaccount/Images/account_archigenerale.png" alt="" /></p>
+<h2 id="package"><a class="header" href="#package">Package</a></h2>
+<p>Tout d'abord nous devons </p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="le-domaine"><a class="header" href="#le-domaine">Le domaine</a></h1>
+<blockquote>
+<p>Domain encapsulate Enterprise wide business rules. An entity can be an object with methods, or it can be a set of data structures and functions.</p>
+</blockquote>
+<pre><code class="language-java">public class Account {
+	private String name;
+
+	private AccountType accountType;
+
+	private Balance balance;
+}
+</code></pre>
+<pre><code class="language-java">public class Balance {
+	private double amount;
+}
+</code></pre>
+<pre><code class="language-java">public enum AccountType {
+	CHEQUE, EPARGNE
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="service"><a class="header" href="#service">Service</a></h1>
+<blockquote>
+<p>This layer contains application specific business rules. It encapsulates and implements all of the use cases of the system. These use cases orchestrate the flow of data to and from the entities, and direct those entities to use their enterprise wide business rules to achieve the goals of the use case.</p>
+</blockquote>
+<p>Le service métier, ici la gestion d'un compte bancaire est :</p>
+<ul>
+<li>représenté par une interface <code>AccountService</code></li>
+<li>cette interface est appelée par notre client au travers du Contrôleur <code>AccountController</code></li>
+<li>Les informations transmises entre le Contrôleur et le service métier sont encapsulées dans un DTO. </li>
+<li>On récupère les informations pertinantes contenu dans le DTO et on applique l'action demandée (e.g créer un nouvel utilisateur)</li>
+<li>Certaine action comme <em>créer un nouvel utilisateur</em> necessite de faire appel à la base de donnée que nous appelerons au travers d'un Adaptateur <code>AccountGateway</code></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="data-transfert-object"><a class="header" href="#data-transfert-object">Data Transfert Object</a></h1>
+<blockquote>
+<p>A Data Transfer Object (DTO) is an object that is used to encapsulate data, and send it from one subsystem of an application to another.</p>
+</blockquote>
+<p>Dans notre cas les DTOs vont permettre de transférer des informations entre le Contrôleur et le Service métier.
+Ainsi, le Contrôleur :</p>
+<ol>
+<li>Recupère les informations fournies par l'utilisateur (e.g. identifiant utilisateur, nom du compte, etc ...). </li>
+<li>Au lieu de transférer directement les informations au Service métier, il va les encapsuler dans un objet DTO.</li>
+<li>Transmet de DTO au Service métier</li>
+</ol>
+<p><img src="Conception/bankaccount/Service/.../../../Images/DTO.png" alt="" /></p>
+<h2 id="exemple-1"><a class="header" href="#exemple-1">Exemple</a></h2>
+<p>Si on souhaite créer un nouveau compte bancaire :</p>
+<ol>
+<li>nous devons fournir au Contrôleur <em>l'identifiant de l'utilisateur</em>, <em>le nom du compte à créer</em> et <em>le type du compte</em> (Epargne ou Chèque). Ces informations seront dans le <em>boby</em> de notre requête http</li>
+<li>nous créons un nouvel objet de type <code>AccountRequestModel</code> en précisant la valeur des attributs en fonction du point précédent.</li>
+<li>le Contrôleur appelle la méthode <code>accountService.create(accountRequestModel)</code> qui accepte seulement un DTO</li>
+</ol>
+<blockquote>
+<p>&quot;DTO&quot; et &quot;Request/ResponseModel&quot; représente la même notion.</p>
+</blockquote>
+<h2 id="requestdto"><a class="header" href="#requestdto">RequestDTO</a></h2>
+<p>Il fait la communication du <code>Controller</code> vers le <code>Service</code></p>
+<pre><code class="language-Java">public class AccountRequestModel {
+	private Long idCustomer;
+	private Long idAccount;
+	private String name;
+	private String accountType;
+}
+</code></pre>
+<h2 id="responsedto"><a class="header" href="#responsedto">ResponseDTO</a></h2>
+<p>Il fait la communication du <code>Service</code> vers le <code>Controller</code></p>
+<pre><code class="language-Java">public class AccountResponseModel {
+	private String name;
+	private String accountType;
+	private double balanceAmount;
+}
+</code></pre>
+<p><strong>Note</strong><br />
+Nous pourrions créer plusieurs DTOs requêtes et réponses afin d'éviter d'avoir des attributs <code>null</code>. En effet, lors de la création d'un nouveau compte bancaire l'attribut <code>idAccount</code> sera <code>null</code>. 
+Mais dans la construction de notre application nous souhaitons rester simple et n'utiliser qu'un seul DTO.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="base-de-données"><a class="header" href="#base-de-données">Base de données</a></h1>
+<p>Pour pour persister des informations en base de données nous allons utiliser des librairies externes. Afin de protéger le coeur de notre application la communication avec la librairie externe se fera à travers d'un adaptateur.
+Nous avons choisis cette solution car :</p>
+<ul>
+<li>Si la librairie externe utilisée modifie son interface alors seule la classe Adaptateur devra être adaptée.</li>
+<li>Si nous décidons d'utiliser une autre librairie qui ne respecte pas les spécification JPA alors seule la classe Adaptateur devra être adaptée.</li>
+</ul>
+<p><strong>Ainsi avec cette option, le coeur restera inchangé quelques soient les choix et directive sur les librairies externes</strong></p>
+<p><img src="Conception/bankaccount/Service/../Images/BDD.png" alt="" /></p>
+<h2 id="entités-jpa"><a class="header" href="#entités-jpa">Entités JPA</a></h2>
+<p>Dans notre application nous avons deux types d'entités</p>
+<ul>
+<li>Les entités du domaine</li>
+<li>Les entités JPA</li>
+</ul>
+<p>Malgré leur forte similitude il est important deux les distinguer dans deux classes séparées. En effet, le coeur applicatif ne doit pas savoir comment les entités sont persistées (fichier, bases de données, etc ...). Ainsi, le lien entre les entités du domaine et les entités JPA sera fait par l'implémentation <code>AccountGatewayIml</code></p>
+<p>Ensuite, lorsque nous créons une entité JPA nous devons préciser :</p>
+<ul>
+<li>que c'est une entité via l'annonation <code>@Entity</code></li>
+<li>la table où cette entité est persisté <code>@Table(nom_table)</code></li>
+<li>par la suite nous vous spécifier des options sur certain attributs :
+<ul>
+<li><code>@Id</code> pour l'identifiant</li>
+<li><code>@OneToOne</code> lorsque nous avons une relation de dépendance entre deux tables</li>
+<li>etc ... </li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-Java">@Entity
+@Table(name = &quot;account&quot;)
+public class AccountJpaEntity {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+
+	@NonNull
+	private Long customerId;
+
+	@NonNull
+	private String name;
+
+	@NonNull
+	private LocalDateTime createdAt;
+
+	@OneToOne(cascade = { CascadeType.ALL })
+	@NonNull
+	private BalanceJPAEntity balanceJPAEntity;
+
+	@Enumerated(EnumType.STRING)
+	@NonNull
+	private AccountTypeJPAEnum accountType;
+}
+</code></pre>
+<pre><code class="language-Java">@Entity
+@Table(name = &quot;balance&quot;)
+public class BalanceJPAEntity {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+
+	@NonNull
+	private double amount;
+
+	@ElementCollection
+	@CollectionTable(name = &quot;transaction&quot;, joinColumns = @JoinColumn(name = &quot;id&quot;))
+	@Column(name = &quot;transactions&quot;)
+	private List&lt;Integer&gt; transactionList;
+
+	@NonNull
+	private LocalDateTime lastUpdate;
+}
+</code></pre>
+<pre><code class="language-Java">public enum AccountTypeJPAEnum {
+	CHEQUE, EPARGNE
+}
+</code></pre>
+<h2 id="le-repository"><a class="header" href="#le-repository">Le Repository</a></h2>
+<p>Il orchestre l'<em>entity manager</em> pour la persistance en base de données. Pour créer notre propre <em>repository</em> nous devons implémenter l'interface <code>JPARepository</code>.</p>
+<p>En implémentant cette interface nous n'avons pas besoin d'écrire les méthodes de base comme <code>save</code>, <code>delete</code>, <code>getById</code>, etc ... elles ont déjà été implémentées. Cependant si nous souhaitons des méthodes plus spécifique à notre problème alors nous devons les écrires.</p>
+<p>Par exemple, nous avons définie une méthode qui permet lister tous les comptes d'un utilisateur</p>
+<pre><code class="language-Java">public interface AccountJpaRepository extends JpaRepository&lt;AccountJpaEntity, Long&gt; {
+	List&lt;AccountJpaEntity&gt; findByCustomerId(Long idCustomer);
+
+	Optional&lt;AccountJpaEntity&gt; findByCustomerIdAndName(Long idCustomer, String name);
+
+	List&lt;AccountJpaEntity&gt; findByCustomerIdAndAccountType(Long idCustomer, AccountTypeJPAEnum accountType);
+}
+</code></pre>
+<p>Ce qui est encore plus fort, c'est que nous n'avons même pas besoin d'implémenter cette classe. En effet, en écrivant bien le nom des méthodes <code>find</code> + <code>By</code> + <code>something</code> où le <code>something</code> un attribut dans nos entités JPA, le framwork est capable d'écrire automatiquement la requête SQL précise.</p>
+<h2 id="la-gateway"><a class="header" href="#la-gateway">La Gateway</a></h2>
+<p>Elle traduit nos :</p>
+<ul>
+<li>entités JPA en entités domaine</li>
+<li>entités domaine en entités JPA</li>
+</ul>
+<pre><code class="language-java">public interface AccountGateway {
+
+	void create(Long idCustomer, String accountName, AccountType accountType);
+	void updateName(Long accountId, String newAccountName);
+	void delete(Long idAccount);
+	Account findByAccountId(Long idAccount);
+	Account findByCustomerIdAndByName(Long idCustomer, String name);
+	Account findByCustomerIdAndAccountId(Long idCustomer, Long idAccount);
+	List&lt;Account&gt; findAllAccounts(Long idCustomer);
+	List&lt;Account&gt; findByCustomerIdAndAccountType(Long customerId, AccountType accountType);
+}
+</code></pre>
+<h3 id="la-méthode-create"><a class="header" href="#la-méthode-create">La méthode create</a></h3>
+<p><strong>Objectif</strong>
+Créer un nouveau compte bancaire à un utilisateur. Elle prend donc en paramètre l'identifiant du client, le nom du compte à créer ainsi que son type. </p>
+<ol>
+<li>Crée l'ensemble des entités JPA nécessaire en utilisant les paramètres</li>
+<li>Appelle la méthode <code>save</code> disponible dans <code>AccountJPARepository</code> (car elle implémente <code>JPARepository</code>)</li>
+</ol>
+<pre><code class="language-Java">@Component
+public class AccountGatewayImpl implements AccountGateway {
+
+	private final AccountJpaRepository accountJpaRepository;
+
+	@Override
+	public void create(Long idCustomer, String accountName, AccountType accountType) {
+		accountJpaRepository.save(
+            new AccountJpaEntity(idCustomer, accountName, LocalDateTime.now(),
+				new BalanceJPAEntity(0.0, LocalDateTime.now()), AccountTypeJPAEnum.valueOf(accountType.name())));
+	}
+    ...
+}
+</code></pre>
+<h3 id="la-méthode-findallaccounts"><a class="header" href="#la-méthode-findallaccounts">La méthode findAllAccounts</a></h3>
+<p><strong>Objectif</strong>
+Récupérer tous les compte bancaires qu'un utilisateur possède</p>
+<ol>
+<li>Appeler la méthode <code>findByCustomerId</code> créée précédement dans <code>AccountJpaRepository</code></li>
+<li>Convertir chaque AccountJPAEntity en Account. En effet, la partie métier ne traite que les entités du domaine</li>
+<li>Retourner la liste</li>
+</ol>
+<pre><code class="language-Java">@Override
+public List&lt;Account&gt; findAllAccounts(Long idCustomer) {
+    List&lt;Account&gt; toReturn = new ArrayList&lt;&gt;();
+    for (AccountJpaEntity accountJpaEntity : accountJpaRepository.findByCustomerId(idCustomer)) {
+        toReturn.add(accountJpaToDomain(accountJpaEntity));
+    }
+    return toReturn;
+}
+
+private Account accountJpaToDomain(AccountJpaEntity jpaEntity) {
+    return Account.builder().name(jpaEntity.getName())
+            .accountType(AccountType.valueOf(jpaEntity.getAccountType().name()))
+            .balance(balanceJpaToDomain(jpaEntity.getBalanceJPAEntity())).build();
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="service-métier"><a class="header" href="#service-métier">Service Métier</a></h1>
+<p>Il fait le lien avec les trois parties :</p>
+<ul>
+<li>Le <code>Controller</code> d'où il reçoit une requête</li>
+<li>Le <code>Domaine</code> qu'il doit exploiter / modifier</li>
+<li>La base de données où sont stocker les informations</li>
+</ul>
+<pre><code class="language-Java">public interface AccountService {
+
+	void create(AccountRequestModel requestModel) throws AccountNameAlreadyExistException;
+
+	void update(AccountRequestModel requestModel) throws AccountDoestExistException;
+
+	void delete(AccountRequestModel requestModel) throws AccountDoestExistException;
+	AccountResponseModel getOneAccount(AccountRequestModel requestModel);
+
+	List&lt;AccountResponseModel&gt; getAllAccounts(AccountRequestModel requestModel);
+
+	List&lt;AccountResponseModel&gt; getAllAccountType(AccountRequestModel requestModel);
+}
+
+</code></pre>
+<p>Sur l'implémentation nous devons spécifier l'annoation <code>@Service</code></p>
+<pre><code class="language-java">@Service
+public class AccountServiceImpl implements AccountService {
+    ...
+}
+</code></pre>
+<h2 id="créer-un-compte-bancaire"><a class="header" href="#créer-un-compte-bancaire">Créer un compte bancaire</a></h2>
+<p>Pour créer un nouveau compte bancaire à l'utilisateur nous devons :</p>
+<ul>
+<li>vérifier que le compte n'existe pas
+<ul>
+<li>donc vérifier en base de données si nous avons quelque chose</li>
+</ul>
+</li>
+<li>vérifier que le type de compte souhaité existe
+<ul>
+<li>vérifier que le type saisi est soit <code>Cheque</code> soit <code>Epargne</code></li>
+</ul>
+</li>
+<li>Créer le compte</li>
+</ul>
+<pre><code class="language-java">@Override
+public void create(AccountRequestModel requestModel) throws AccountNameAlreadyExistException {
+    // Récupérer en base de données un compte bancaire via l'identifiant du client et le nom du compte
+    Account accountAlreadyExist = accountGateway.findByCustomerIdAndByName(requestModel.getIdCustomer(),
+            requestModel.getName());
+
+    if (accountAlreadyExist != null) {
+        throw new AccountNameAlreadyExistException(
+                &quot;Account with name &quot; + requestModel.getName() + &quot; already exist&quot;);
+    }
+
+    // Vérifier si le type de compte est valide
+    if (!requestModel.getAccountType().equals(AccountType.CHEQUE.name())
+            &amp;&amp; !requestModel.getAccountType().equals(AccountType.EPARGNE.name())) {
+        throw new IllegalArgumentException(&quot;The account type &quot; + requestModel.getAccountType() + &quot; doesn't exist&quot;);
+    }
+
+    // Créer le compte bancaire en appelant la gateway et en transmettant les paramètres
+    accountGateway.create(requestModel.getIdCustomer(), requestModel.getName(),
+            AccountType.valueOf(requestModel.getAccountType()));
+}
+</code></pre>
+<p><strong>Note</strong>
+Afin de simplifier la création des microservices par ordre de difficulté et étant donné que le microservice pour la création d'un nouvelle utilisateur n'a pas encore été développé nous ne vérifions pas ici si l'utilisateur existe (<code>customerID</code>).</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="contrôleur"><a class="header" href="#contrôleur">Contrôleur</a></h1>
+<p>Il recoit les requête WEB et transmet l'information à la partie métier. Nous y définissons l'ensemble des points d'entrées de notre application.</p>
+<h2 id="api"><a class="header" href="#api">API</a></h2>
+<ul>
+<li>Chaque point d'entrée commence par <code>/account</code> suivi de
+<ul>
+<li><code>/create</code> pour créer un compte </li>
+<li><code>/update/{id}</code> pour mettre en jour un compte</li>
+<li><code>/delete/{id}</code> pour supprimer un compte</li>
+<li><code>/customer/{id}</code> récupérer <strong>tous</strong> les au comptes du client <code>id</code></li>
+<li><code>/customer/{idCustomer}/account/{idAccount}</code> récupérer un compte spécifique <code>idAccount</code> du client <code>idCustomer</code></li>
+<li><code>/customer/{idCustomer}/type/{accountType}</code> récupérer tous les comptes en fonction du type <code>CHEQUE</code> ou <code>EPARGNE</code></li>
+</ul>
+</li>
+</ul>
+<p>Pour ce faire la classe <code>AccountController</code> possèdera :</p>
+<ul>
+<li>l'annotation <code>@RestController</code></li>
+<li>l'annotation <code>@RequestMapping(&quot;/account&quot;)</code></li>
+</ul>
+<h2 id="créer-un-compte"><a class="header" href="#créer-un-compte">Créer un compte</a></h2>
+<ol>
+<li>Prend en paramètre un objet représentant un <code>AccountRequestModel</code></li>
+<li>Appel du service métier 
+<ol>
+<li>Si succès alors on renvoie le status 201</li>
+<li>Si erreur alors on renvoie le status 403</li>
+</ol>
+</li>
+</ol>
+<pre><code class="language-java">@PostMapping(&quot;/create&quot;)
+public ResponseEntity create(@RequestBody AccountRequestModel requestModel) {
+    try {
+        // Appel de la partie métier
+        accountService.create(requestModel);
+        return ResponseEntity.status(HttpStatus.CREATED).body(&quot;New account &quot; + requestModel.getName() + &quot; created&quot;);
+    } catch (AccountNameAlreadyExistException e) {
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.getMessage());
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="tester"><a class="header" href="#tester">Tester</a></h1>
+<p>Notre application est prête à être testée. La classe principale composée de la méthode <code>main()</code> est très classique.</p>
+<pre><code class="language-Java">@SpringBootApplication
+@RestController
+public class BankAccountApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(BankAccountApplication.class, args);
+	}
+
+	@GetMapping
+	public String hello() {
+		return &quot;Welcome to Bank Account&quot;;
+	}
+}
+</code></pre>
+<h2 id="lancer-notre-application"><a class="header" href="#lancer-notre-application">Lancer notre application</a></h2>
+<p>Il suffit de lancer le programme Java via <code>Run As -&gt; Java Application</code>. Un serveur accessible à l'adresse suivant <code>localhost:8081</code> est déployé. </p>
+<h3 id="création-automatique-de-la-table"><a class="header" href="#création-automatique-de-la-table">Création automatique de la table</a></h3>
+<p>Lorsqu'on lance le serveur, Spring va nous créer les tables relatives au compte bancaire, à la balance et aux transaction. On retrouve la log suivante </p>
+<pre><code class="language-text">Hibernate: 
+    
+    create table account (
+       id  bigserial not null,
+        account_type varchar(255),
+        created_at timestamp,
+        customer_id int8,
+        name varchar(255),
+        balancejpaentity_id int8,
+        primary key (id)
+    )
+Hibernate: 
+    
+    create table balance (
+       id  bigserial not null,
+        amount float8 not null,
+        last_update timestamp,
+        primary key (id)
+    )
+Hibernate: 
+    
+    create table transaction (
+       id int8 not null,
+        transactions int4
+    )
+Hibernate: 
+    
+    alter table account 
+       add constraint FK4ph46xeruid24i50n89i428j6 
+       foreign key (balancejpaentity_id) 
+       references balance
+Hibernate: 
+    
+    alter table transaction 
+       add constraint FKrn3ygljg7joxal9hsu695ltr6 
+       foreign key (id) 
+       references balance
+</code></pre>
+<h2 id="tester-notre-application"><a class="header" href="#tester-notre-application">Tester notre application</a></h2>
+<p>On peut utiliser par exemple <a href="https://www.postman.com/">Postman</a> pour effectuer des requêtes vers notre application.</p>
+<p><img src="Conception/bankaccount/Images/postman.png" alt="" /></p>
+<h2 id="diagramme-de-séquence"><a class="header" href="#diagramme-de-séquence">Diagramme de séquence</a></h2>
+<p>On représence ci-desosus l'ensemble des étapes necessaire à la création d'un compte bancaire</p>
+<ol>
+<li>L'utilisateur appelle le contrôleur en lui transmettent un <em>body</em> contenant toutes les informations à enregistrer</li>
+<li>Le Contrôleur transmet au Service les informations sous la forme d'un DTO</li>
+<li>Le Service transmet à l'adapteur de la base de données </li>
+<li>L'adapteur de la base de données convertit les informations reçu en entité JPA puis appelle le Repository qui assurera la persistance</li>
+</ol>
+<p><img src="Conception/bankaccount/Images/sequence_creation.png" alt="" /></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="introduction-2"><a class="header" href="#introduction-2">Introduction</a></h1>
+<blockquote>
+<p>L’authentification est un processus permettant au système de s’assurer de la légitimité de la demande d’accès faite par une entité […] afin de l'autoriser à accéder à ressources du système.</p>
+</blockquote>
+<p>Dans ce chapitre, nous nous interessons donc à l'enregistrement et la connexion d'un utilisateur. En soit, gérer l'authentification</p>
+<h2 id="analyse-du-besoin-1"><a class="header" href="#analyse-du-besoin-1">Analyse du besoin</a></h2>
+<p>Des pages sont accéssible sans être connectés. C'est le cas de la page de <em>login</em> et de <em>registration</em>.
+D'autres pages, demande à l'utilisateur d'être connecté, comme la page <em>restricted</em>.</p>
+<p>Nous devons donc mettre en place un système permettant d'accéder à des ressources non protégées et à une ressource protégée.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="configuration-1"><a class="header" href="#configuration-1">Configuration</a></h1>
+<h2 id="pom-1"><a class="header" href="#pom-1">Pom</a></h2>
+<p><em>Spring Boot Starter Security</em> est un module pratique et efficace pour ajouter des fonctionnalités de sécurité à une application Spring Boot avec une configuration minimale.</p>
+<pre><code class="language-XML">&lt;!-- Spring --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-security&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h2 id="applicationproperties-1"><a class="header" href="#applicationproperties-1">Application.properties</a></h2>
+<p>Dans le fichier <code>src/main/resources/application.properties</code></p>
+<ul>
+<li>On spécifie le port sur lequel l'application doit être déployée</li>
+<li>On spécifie l'ensemble des informations pour accéder au services de gestion de base de données</li>
+</ul>
+<pre><code class="language-properties"># Server configuration
+server.port=8083
+
+#PostgreSQL Configuration
+spring.datasource.url=jdbc:postgresql://localhost:5432/customer
+spring.datasource.username=postgres
+spring.datasource.password=postgres
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQL81Dialect
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="architecture-1"><a class="header" href="#architecture-1">Architecture</a></h1>
+<p>On reprend la même architecture que dans le chapitre précédent. Nous y avons juste rajouter dans la couche métier la classe <code>SecurityConfig</code> qui permet de mettre en place l'authentification dans notre application</p>
+<p><img src="Conception/registration/Images/registration_archi.png" alt="" /></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="domaine"><a class="header" href="#domaine">Domaine</a></h1>
+<pre><code class="language-Java">public class Customer {
+
+	private String email;
+	private String password;
+	private String firstName;
+	private String lastName;
+	private String username;
+	private String phoneNumber;
+	private Role role;
+
+}
+</code></pre>
+<pre><code class="language-Java">public enum Role {
+	USER(&quot;User&quot;), ADMIN(&quot;Admin&quot;);
+
+	private final String value;
+
+	private Role(String value) {
+		this.value = value;
+	}
+
+	public String getValue() {
+		return value;
+	}
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><div style="break-before: page; page-break-before: always;"></div><h1 id="dto"><a class="header" href="#dto">DTO</a></h1>
+<p>Nous décisons ici de créer deux DTO pour les requêtes :</p>
+<ul>
+<li>Un pour la création d'un compte utilisateur</li>
+<li>Un pour la demande de connexion</li>
+</ul>
+<pre><code class="language-Java">public class RegisterCustomerRequestDTO {
+	private String email;
+	private String password;
+	private String matchedPassword;
+	private String firstName;
+	private String lastName;
+	private String phoneNumber;
+
+}
+</code></pre>
+<pre><code class="language-Java">public class LoginRequestDTO {
+	private String email;
+	private String password;
+}
+</code></pre>
+<p>On remarque bien la différence entre les DTOs et le Domaine. Dans le premier DTO, nous avons deux fois le mot de passe. L'utilisateur va être amené à le saisir deux fois mais dans le Domaine nous ne le spécifions qu'une seule fois (comme en base de donnée). En effet, dans la partie service métier nous allons vérifier que les deux mot de passes sont égaux.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="base-de-données-1"><a class="header" href="#base-de-données-1">Base de données</a></h1>
+<h2 id="entité-jpa"><a class="header" href="#entité-jpa">Entité JPA</a></h2>
+<p>Nous n'avons qu'une seule entité JPA qu'est l'utilisateur. De même que pour les DTOs on remarque que l'entité JPA n'est pas exactement la même que l'entité du Domaine. En effet, il peut être intéressant de connaitre la date de création/de mise à jour du compte en base sans forcément l'exploiter dans notre application.</p>
+<pre><code class="language-Java">@Entity
+@Table(name = &quot;customer&quot;)
+public class CustomerJpaEntity {
+	@SequenceGenerator(name = &quot;users_sequence&quot;, sequenceName = &quot;users_sequence&quot;, allocationSize = 1)
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = &quot;users_sequence&quot;)
+	private int id;
+
+	@NonNull
+	@Column(name = &quot;first_name&quot;)
+	private String firstName;
+
+	@NonNull
+	@Column(name = &quot;last_name&quot;)
+	private String lastName;
+
+	@NonNull
+	@Column(name = &quot;email&quot;, unique = true)
+	private String email;
+
+	@NonNull
+	@Column(name = &quot;password&quot;)
+	private String password;
+
+	@NonNull
+	@Column(name = &quot;mobile&quot;, unique = true)
+	private String mobile;
+
+	@NonNull
+	@Enumerated(EnumType.STRING)
+	private Role role;
+
+	@Column(name = &quot;created_at&quot;, updatable = false)
+	@NonNull
+	private LocalDateTime createdAt;
+
+	@Column(name = &quot;updated_at&quot;)
+	@NonNull
+	private LocalDateTime updatedAt;
+
+}
+</code></pre>
+<h2 id="le-repository-1"><a class="header" href="#le-repository-1">Le Repository</a></h2>
+<p>Il implémente l'interface <code>JPARepository</code> est ajoute des méthodes spécifiques. </p>
+<pre><code class="language-Java">@Repository
+public interface CustomerJpaRepository extends JpaRepository&lt;CustomerJpaEntity, Long&gt; {
+	Optional&lt;CustomerJpaEntity&gt; findByEmail(String email);
+
+	Optional&lt;CustomerJpaEntity&gt; findByMobile(String mobile);
+
+	Optional&lt;CustomerJpaEntity&gt; findById(Long idCustomer);
+}
+</code></pre>
+<p><strong>Note</strong><br />
+Nous avons créer la méthode <code>findById</code> car nous souhaitons retourner un <code>Optional</code>. Néanmoins, JPA fourni la méthode <code>getReferenceById</code> qui permet de récupérer une entité de type <code>Entity</code> (i.g. <code>CustomerJpaEntity</code>).</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="service-métier-1"><a class="header" href="#service-métier-1">Service Métier</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="gestion-de-lauthentification"><a class="header" href="#gestion-de-lauthentification">Gestion de l'authentification</a></h1>
+<p>La gestion de la sécurité étant le sujet principal de ce chapitre sur l'authentification j'ai décidé de créer une section séparée qui lui sera dédiée. Mais à noter, que l'ensemble des classes développées iront dans le package <code>/usecase/security</code>. En effet, la gestion de la sécurité fait bien partie de notre domaime des cas d'utilisations / services.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="architecture-spring-security"><a class="header" href="#architecture-spring-security">Architecture Spring Security</a></h1>
+<p>Avant de coder la mise en place de la sécurité dans notre application, il est important de comprendre l'architecture mise en place par Spring pour réaliser l'authentification.</p>
+<h2 id="comment-accéder-à-une-ressource-privée"><a class="header" href="#comment-accéder-à-une-ressource-privée">Comment accéder à une ressource privée</a></h2>
+<p>L'authentification permet de restreindre l'accès une ressource qu'aux utilisateurs authentifiés. Pour ce faire Spring utilise le système suivant</p>
+<p><img src="Conception/registration/Security/../Images/fonctionnementspringsecurity.png" alt="" /></p>
+<ul>
+<li>Lorsqu'une <em>requête</em> arrive, elle est <strong>interceptée</strong> pour authentifiée ou vérifier si l'utilisateur est authentifiée.
+<ul>
+<li>Si l'utilisateur ne réussit pas cette étape, alors une exception est levée par le bloc d'authentification. Par conséquence, le Contrôleur n'est pas invoqué, l'utilisateur n'accède pas à la ressource.</li>
+<li>Si l'utilisateur est correctement authentifié, alors l'authentification déclenche l'appel au Contrôleur qui va retourner le contenu demandé.</li>
+</ul>
+</li>
+</ul>
+<h3 id="détail-du-bloc-dauthentification"><a class="header" href="#détail-du-bloc-dauthentification">Détail du bloc d'authentification</a></h3>
+<p>Après avoir décrit le fonctionnement (reussite/echec) regardons en détail le fonctionnement du bloc d'authentification. C'est la partie la plus complexe, mais sa compréhension est priomardiale.</p>
+<p><img src="Conception/registration/Security/../Images/fonctionnementspringsecurity2.png" alt="" /></p>
+<ol>
+<li>Lorsque la requête arrive elle est tout d'abord intercepté par la <em>Security Filter chain</em>. C'est une série de filtre qui vont vérifier si l'utilisateur peut accéder à la ressource.</li>
+<li>Parmi ces filtres, un permet de vérifier l'authentification. Pour ce faire il va appeler un <code>AuthenticationManager</code> en lui fournissant un objet de type <code>UsernamePasswordAuthenticationToken</code> construit via la requête.</li>
+<li>L'<code>AuthenticationManager</code> va appeler un <code>Provider</code> (e.g. <code>AuthenticationProvider</code>) qui retrouver l'utilisateur (chez nous en base de donnée). Pour ce faire, on doit lui injecté lors de son initialisation un <code>PasswordEncoder</code> et un <code>UserDetailService</code>.</li>
+<li>Finalement si l'utilisateur est bien présent en base de données, une <code>Authentification</code> est retournée. Elle est stockée dans le <code>SecurityContext</code></li>
+<li>Et le dernier filtre passe la main au Contrôleur</li>
+</ol>
+<h2 id="définitions"><a class="header" href="#définitions">Définitions</a></h2>
+<h3 id="security-filter-chain"><a class="header" href="#security-filter-chain">Security Filter Chain</a></h3>
+<p>Lorsque la requête est envoyé par l'utilisateur elle est interceptée par la <em>Security Filter Chain</em> qui est composée d'une série de filtre.</p>
+<h3 id="lauthentication-manager"><a class="header" href="#lauthentication-manager">L'Authentication Manager</a></h3>
+<blockquote>
+<p>Il crée un Authorization ou lève une exception.</p>
+</blockquote>
+<p>Si l'authentification n'est pas réussite une exception est levée, par conséquence le contrôleur n'est pas appelé et la ressource n'est pas accessible.</p>
+<pre><code class="language-java">public interface AuthenticationManager {
+    Authentication authenticate(Authentication authentication) throws AuthenticationException;
+}
+</code></pre>
+<p>. Cette interface est composée d'une seule méthode qui prend en paramètre un <code>Authentication</code> fournie est valide :</p>
+<ul>
+<li>Renvoie une <code>Authentication</code> (normalement avec <code>authenticated=true</code>) si elle est confirmée</li>
+<li>Lancer l'exception <code>AuthenticationException</code> si elle n'a pas pu être vérifiée</li>
+</ul>
+<p>A noter, que notre requête doit donc être transformé en un objet de type <code>Authentication</code>, par exemple <code>UsernamePasswordAuthenticationToken</code> pour pouvoir être passé à l'<code>AuthenticationManager</code>. </p>
+<h3 id="daoauthenticationprovider"><a class="header" href="#daoauthenticationprovider">DAOAuthenticationProvider</a></h3>
+<blockquote>
+<p>Permet d'authentifier via un username et un password</p>
+</blockquote>
+<p>Pour fonctionner il necessite qu'on lui injecte lors de sa construction un <code>PasswordEncoder</code> ainsi qu'un <code>UserDetailService</code>.</p>
+<h3 id="userdetailservice"><a class="header" href="#userdetailservice">UserDetailService</a></h3>
+<blockquote>
+<p>Charge un utilisateur (nous en base de données) et le retourne sous la forme d'un <code>UserDetails</code></p>
+</blockquote>
+<pre><code class="language-java">public interface UserDetailService {
+    UserDetails loadUserByUsername(String username) throws UsernameNotFoundException;
+}
+</code></pre>
+<p>Pour pouvoir récupérer un utilisateur en base de données, il va falloir lui &quot;fournir l'accés&quot; et coder nous même le corps de la fonction. En d'autre terme, cette fonction va être implémenté dans notre ``CustomerServiceImpl<code>où elle va appeler la gateway puis transformer l'entité domaine en</code>UserDetails`.</p>
+<p><img src="Conception/registration/Security/../Images/userdetailservice.png" alt="" /></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="implémentation-de-larchitecture"><a class="header" href="#implémentation-de-larchitecture">Implémentation de l'architecture</a></h1>
+<p>Nous avons vu le fonctionnement de Spring Security, nous allons maintenant mettre en oeuvre les trois différente partie de l'authentification :</p>
+<ul>
+<li>Le manager <code>AuthenticationManager</code></li>
+<li>Le provider <code>DAOAuthenticationProvider</code></li>
+<li>Le security filter chain</li>
+</ul>
+<p>Pour ce faire, nous allons développée une classe <code>SecurityConfig</code> que nous allons annoter avec <code>@Configuration</code> et <code>@EnabledWebSecurity</code></p>
+<pre><code class="language-java">@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+    /* manager */
+    /* provider */
+    /* security filter chain */
+}
+</code></pre>
+<h2 id="créer-un-auhenticationmanager"><a class="header" href="#créer-un-auhenticationmanager">Créer un AuhenticationManager</a></h2>
+<p>L'implémentation par défaut, si nous ne précisons pas le <code>AuthentificationManager</code> Spring utilisera le <code>ProviderManager</code>. Ainsi le code permettant de fournir un  <code>AuthentificationManager</code> à notre programme reste simple.</p>
+<pre><code class="language-java">@Bean
+public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+    return authenticationConfiguration.getAuthenticationManager();
+}
+</code></pre>
+<h2 id="créer-un-daoauthenticationprovider"><a class="header" href="#créer-un-daoauthenticationprovider">Créer un DAOAuthenticationProvider</a></h2>
+<p>Le <code>DAOAuthenticationProvider</code> à une dépendance vers un <code>PasswordEncore</code> et vers un <code>UserDetailService</code> que nous devons lui founir</p>
+<pre><code class="language-java">@Bean
+public AuthenticationProvider authenticationProvider(UserDetailsService userDetailsService , PasswordEncoder passwordEncoder) {
+    DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+    daoAuthenticationProvider.setPasswordEncoder(passwordEncoder);
+    daoAuthenticationProvider.setUserDetailsService(userDetailsService);
+    return daoAuthenticationProvider;
+}
+
+@Bean
+public PasswordEncoder passwordEncoder() {
+    return new BCryptPasswordEncoder();
+}
+</code></pre>
+<p>Etant donné que nous avons besoin d'un <code>passwwordEncoder</code> nous devons créer un Bean spécifique. Concernant l'<code>userDetailService</code> il sera injecté via l'annotation que nous positionnerons sur la classe.</p>
+<h2 id="créer-une-security-filter-chain"><a class="header" href="#créer-une-security-filter-chain">Créer une Security Filter Chain</a></h2>
+<p>Il ne nous reste plus qu'à définir la <em>Security Filter Chain</em>. </p>
+<pre><code class="language-java">@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+
+  @Bean
+  public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
+    httpSecurity.csrf().disable()
+                    .authorizeHttpRequests()
+                    .antMatchers(&quot;/customer/auth/*&quot;).permitAll()
+                    .anyRequest().authenticated();
+
+        // Construction de la chaine
+        return httpSecurity.build();
+  }
+}
+</code></pre>
+<h3 id="autoriser-des-requêtes-sans-authentification"><a class="header" href="#autoriser-des-requêtes-sans-authentification">Autoriser des requêtes sans authentification</a></h3>
+<p>Pour que l'utilisateur est la possibilité de créer un compte ou de se connecter nous devons autoriser les requête vers ces deux end-points :</p>
+<ul>
+<li><code>.antMatchers(&quot;/customer/auth/*&quot;).permitAll()</code> permet de dire que toutes requêtes provevant de <code>/customer/auth/*</code> n'ont pas besoin d'être authentifiées :
+<ul>
+<li><code>/customer/auth/login</code></li>
+<li><code>/customer/auth/register</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="interdire-des-requête-aux-utilisateurs-non-connectés"><a class="header" href="#interdire-des-requête-aux-utilisateurs-non-connectés">Interdire des requête aux utilisateurs non connectés</a></h3>
+<p>Néanmois, nous souhaitons que les autres pages soient accessibles seulement aux utilisateur connectés :</p>
+<ul>
+<li><code>.anyRequest().authenticated()</code> spécifie que seuls les utilisateurs authentifiés peuvent avoir accès à toutes autres ressources</li>
+</ul>
+<h2 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h2>
+<p>En soit, cette classe nous permet de personnaliser comment Spring va gérer l'authentification. En effet, Spring fournit le mécanisme mais nous sommes libre de :</p>
+<ul>
+<li>Préciser le fonctionnement de la <code>SecurityFilterChain</code></li>
+<li>Préciser l'<code>AuthenticationManager</code> à utiliser</li>
+<li>Fournir un ou plusieurs <code>AuthenticationProvider</code></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="userdetailservice-1"><a class="header" href="#userdetailservice-1">UserDetailService</a></h1>
+<blockquote>
+<p>UserDetailsService is used by DaoAuthenticationProvider for retrieving a username, a password, and other attributes for authenticating with a username and password </p>
+</blockquote>
+<p>Pour assurer l'authentification il faut que notre classe <code>RegisterCustomerServiceImpl</code> implémente en plus l'interface <code>UserDetailsService</code>. Cela va également impliqué de redéfinir et d'ajouter la méthode <code>loadUserByUsername()</code>.</p>
+<p><strong>Note</strong><br />
+Dans notre cas le critère d'uniticité est l'adresse email</p>
+<pre><code class="language-java">public interface RegisterCustomerService extends UserDetailsService {
+	void register(RegisterCustomerRequestModel dto) throws ...;
+
+	void update(RegisterCustomerRequestModel dto, Long id) throws ...;
+}
+
+</code></pre>
+<pre><code class="language-java">@Service
+public class RegisterCustomerServiceImpl implements RegisterCustomerService {
+
+	...
+
+	@Override
+	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        // Récupération de l'utilisateur en BDD
+		Customer customer = customerRegisterGateway.findByEmail(email);
+
+		// Conversion d'un customer en UserDetail
+		User user = new User(customer.getEmail(), customer.getPassword(),
+				Collections.singletonList(new SimpleGrantedAuthority(customer.getRole().name())));
+
+		return user;
+	}
+}
+</code></pre>
+<p>1- Nous allons récupérer l'utilisateur en base de données en fonction de son adresse mail
+2- Puis convertir l'objet <code>Customer</code> retourné en un <code>UserDetail</code> qui est la représentation d'un utilisateur en Spring Security</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="contrôleur-1"><a class="header" href="#contrôleur-1">Contrôleur</a></h1>
+<p>Il recoit les requête WEB et transmet l'information à la partie métier. </p>
+<h2 id="api-1"><a class="header" href="#api-1">API</a></h2>
+<p>Chaque point d'entrée commence par <code>customer</code> suivi de</p>
+<ul>
+<li><code>/registration</code> pour créer un nouveau compte utilisateur</li>
+<li><code>/login</code> pour se connecter</li>
+<li><code>/update/{id}</code> pour mettre à jour son compte (principalement le mot de passe)</li>
+<li><code>/restricted</code> qui est une page accessible <strong>uniquement</strong> si on est authentifié</li>
+</ul>
+<h2 id="attributs"><a class="header" href="#attributs">Attributs</a></h2>
+<pre><code class="language-java">@RestController
+@RequestMapping(&quot;/customer&quot;)
+public class CustomerController {
+
+    // Fourni par le Bean développé dans SecurityConfig
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    private RegisterCustomerService registerCustomerService;
+
+    ...
+}
+</code></pre>
+<h2 id="senregistrer"><a class="header" href="#senregistrer">S'enregistrer</a></h2>
+<p>L'enregistrement d'un nouvel utilisateur ne pose pas de problème particulier. Nous appelons simplements le service en lui fournissant le DTO.</p>
+<pre><code class="language-Java">@PostMapping(&quot;/register&quot;)
+public ResponseEntity create(@RequestBody RegisterCustomerRequestDTO requestModel) {
+
+    try {
+        // Appel service métier en fournissant le DTO
+        registerCustomerService.register(requestModel);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(&quot;New account created&quot;);
+    } catch (RegistrationMailAlreadyExist | RegistrationPhoneNumberAlreadyExist | RegistrationMDPmatch e) {
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.getMessage());
+    }
+}
+</code></pre>
+<h2 id="se-connecter"><a class="header" href="#se-connecter">Se connecter</a></h2>
+<p>Néanmois la connexion est un peu plus complexe à mettre en oeuvre. Elle se traduit par le code suivant où nous devons</p>
+<ol>
+<li>Créer un token d'authentification avec les informations founies par l'utilisateur. Pour rappel, la classe en charge de l'authentification est <code>AuthenticationManager</code> est son unique méthode accepte un objet de type <code>Authentication</code> (e.g <code>UsernamePasswordAuthenticationToken</code>).</li>
+<li>Demander au gestionnaire d'authentification <code>AuthenticationManager</code> si les idenfiants sont corrects</li>
+<li>Mettre à jour le <code>SecurityContext</code> avec les informations du client maintenant authentifié</li>
+</ol>
+<pre><code class="language-Java">@PostMapping(&quot;/auth/login&quot;)
+public ResponseEntity&lt;String&gt; login(@RequestBody LoginRequestDTO loginDTO) {
+    try {
+        /* Créer un objet de type Authentication */
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(loginDTO.getEmail(),
+                loginDTO.getPassword());
+
+        /* Appeler l'authenticationManager en passant l'objet précédent */        
+        Authentication auth = authenticationManager.authenticate(token);
+
+        /* Ajouter l'authentification au SecurityContext */
+        SecurityContextHolder.getContext().setAuthentication(auth);
+        
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(&quot;User connected&quot;);
+    } catch (AuthenticationException e) {
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.getMessage());
+    }
+}
+</code></pre>
+<h3 id="diagramme-de-séquence-1"><a class="header" href="#diagramme-de-séquence-1">Diagramme de séquence</a></h3>
+<p>Le diagramme de séquence simplifié reprend les étapes réalisées en interne par le framework Spring pour réaliser une demande d'authentification</p>
+<p><img src="Conception/registration/Images/authentification_sequence.png" alt="" /></p>
+<ol>
+<li>L'utilisateur effectue une requête sur <code>/auth/login</code></li>
+<li>La première instruction dans le Contrôleur crée un <em>token d'authentification</em></li>
+<li>Les informations saisies sont envoyées à un <code>AuthenticationManager</code></li>
+<li>Qui retransmets les informations à un objet de type <code>AuthentificationProvider</code></li>
+<li><code>AuthentificationProvider</code> va :
+<ol>
+<li>Appeler la méthode <code>retrieveUser</code> qui à partir du token d'authentification va retourner un objet de type <code>UserDetail</code>. L'<code>UserDetail</code> est l'objet Spring qui fournit des informations de base sur l'utilisateur.</li>
+<li>Appeler la méthode <code>loadUserByUsername</code> sur un objet de type <code>UserDetailService</code>. Et, précédement nous avons créer notre propre implémentation <code>RegisterCustomerServiceImpl</code></li>
+<li>Ainsi, cette méthode (dont nous avons définie le fonctionnement juste avant) va aller chercher en base de données l'utilisateur et le renvoyer sous sa forme <code>UserDetail</code></li>
+</ol>
+</li>
+<li>Nous avons donc récupérer notre utilisateur (il existe bien !). <code>AuthentificationProvider</code> va donc crée un objet de type <code>Authentification</code> en précisant l'attribut <code>authenticated = true</code></li>
+<li>Ce dernier objet et remonté jusqu'au Contrôleur qui va l'ajouter dans le <code>SecurityContext</code></li>
+</ol>
+<h2 id="page-avec-restriction"><a class="header" href="#page-avec-restriction">Page avec restriction</a></h2>
+<p>Il n'y a aucune indication dans le Contrôleur qui informe que la page necessite une authentification.
+La gestion a été définie dans la classe <code>SecurityConfig</code>.</p>
+<pre><code class="language-Java">@GetMapping(&quot;/restricted&quot;)
+public String retricted() {
+    return &quot;Welcome to Restricted page&quot;;
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><div style="break-before: page; page-break-before: always;"></div><h1 id="authentification-basic"><a class="header" href="#authentification-basic">Authentification Basic</a></h1>
+<p>Nous faisons une brève aparté sur l'<em>authentification basic</em> car elle permet de comprendre le fonctionnement des filtres et comment ils sont été mis en oeuvre dans Spring.</p>
+<p>L'authentification basique fonctionne comme suit :</p>
+<ol>
+<li>Le client demande d'accéder à une ressource et envoie ses identifiants de connexion sous forme d'une chaîne de caractères encodée en base64 qui contient le nom d'utilisateur et le mot de passe séparés par un deux-points.</li>
+<li>Le serveur décode ensuite la chaîne encodée en base64 pour extraire le nom d'utilisateur et le mot de passe, puis vérifie si ces informations sont valides.</li>
+<li>Si elles sont valides, l'utilisateur est considéré comme authentifié et peut accéder à la ressource protégée.</li>
+</ol>
+<p><img src="Conception/registration/Basic/../Images/Basic_fonctionnement.png" alt="" /></p>
+<p><strong>Note</strong><br />
+L'authentification Basic n'est pas sécurisée car les informations d'identification sont envoyées en clair dans l'en-tête HTTP.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="security-filter-chain-1"><a class="header" href="#security-filter-chain-1">Security Filter Chain</a></h1>
+<p>Nous devons mettre à jour notre <em>Security Filter Chain</em> pour qu'elle prenne en compte l'<em>authentification basic</em> en rajoutant les deux instructions suivantes</p>
+<pre><code class="language-java">  @Bean
+  public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
+    httpSecurity.
+        ...
+        .and()
+        .httpBasic(); /* authentication basic */
+  }
+</code></pre>
+<h2 id="mise-en-garde"><a class="header" href="#mise-en-garde">Mise en garde</a></h2>
+<p>Quelques tutoriel appèlent systémentatiquement <code>.httpBasic()</code>. Or, nous en avons besoin uniquement lorsque nous réalisation une <em>authentification basic</em>. Dans le chapitre précédent, la connexion a été codée manuellement. En effet, dans la méthode <code>login</code> du <code>RegisterController</code> nous préciserons :</p>
+<ul>
+<li>Comment créer <code>UsernameDetailService</code></li>
+<li>L'appel à l'<code>AuthentificationManager</code></li>
+<li>L'ajout au <code>SecurityContext</code></li>
+</ul>
+<p>En soit, si nous précisons <em>Basic</em> cela signifie qu'on n'a pas à coder les morceaux précédent. <code>BasicAuthenticationFilter</code> s'occupe d'appeler l'<code>AuthenticationManager</code> en lui fournissant l'<code>Authentication</code></p>
+<p><img src="Conception/registration/Basic/../Images/SpringSecurityArchiBasic.png" alt="" /></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="controleur"><a class="header" href="#controleur">Controleur</a></h1>
+<p>Nous pouvons nous passer de la page <code>/auth/login</code>, car l'utilisateur devra saisir ces identifiant pour se connecter à chacune des pages.
+Ainsi pour accéder à <code>restricted</code> il devra donner son identifiant et son mot de passe.</p>
+<pre><code class="language-java">@GetMapping(&quot;/restricted&quot;)
+public String retricted() {
+    return &quot;Welcome to Restricted page&quot;;
+}
+</code></pre>
+<h2 id="basic-authentification-avec-spring"><a class="header" href="#basic-authentification-avec-spring">Basic authentification avec Spring</a></h2>
+<p>La documentation <a href="https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/basic.html">Spring</a> explique très bien l'<em>authentification Basic</em>.</p>
+<p><img src="Conception/registration/Basic/basicauthenticationfilter.png" alt="" /></p>
+<p>Spring fourni par défaut :</p>
+<ul>
+<li>un filtre <code>BasicAuthenticationFilter</code> intercepte la requête</li>
+<li>qui va crée le <code>UsernamePasswordAuthenticationFilter</code></li>
+<li>qui va appeler <code>AuthenticationManager</code>. On retombe sur le diagramme de séquence décrit précédement, avec un appel au <code>DaoAuthenticationProvider</code></li>
+<li>pour au final ajouter l'authentification au <code>SecurityContext</code></li>
+</ul>
+<p><strong>Conséquence</strong><br />
+Ainsi, l'authentification (le login) est assuré en interne par Spring, nous n'avons pas besoin de coder de méthode <code>login()</code>.</p>
+<h2 id="diagramme-de-séquence-2"><a class="header" href="#diagramme-de-séquence-2">Diagramme de séquence</a></h2>
+<p><img src="Conception/registration/Basic/../Images/basic_sequence.png" alt="" /></p>
+<h2 id="stacktrace"><a class="header" href="#stacktrace">StackTrace</a></h2>
+<p><img src="Conception/registration/Basic/../Images/Basic_stacktrace_filter.png" alt="" /></p>
+<ul>
+<li>Nous avons bien un ensemble de filtre exécutés, dont le <code>BasicAuthenticationFilter</code>.</li>
+<li>Qui va faire appel à une intance de <code>AuthenticationManager</code>, en l'occurance <code>ProviderManager</code></li>
+<li>Qui lui, va appeler le <code>DaoAuthenticationProvider</code> afin de fournir une <code>Authentication</code> </li>
+</ul>
+<p>L'invocation du contrôleur est réalisée automatiquement après, une fois la <em>Security Filter Chain</em> &quot;validée&quot;, c'est-à-dire que l'utilisateur est bien authentifié.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="authentification-jwt"><a class="header" href="#authentification-jwt">Authentification JWT</a></h1>
+<p>Nous avons vu comment mettre en place une authentification dans Spring Security. Maintenant nous souhaitons mettre en place une authentification avec un token JWT.</p>
+<h2 id="fonctionnement-jwt"><a class="header" href="#fonctionnement-jwt">Fonctionnement JWT</a></h2>
+<blockquote>
+<p>Les JSON Web Tokens (JWT) sont un moyen sécurisé de transmettre des informations entre deux parties. Ils sont généralement utilisés pour les applications Web et les services RESTful.</p>
+</blockquote>
+<p>Voici comment se déroule l'authentification avec JWT entre un client et un serveur</p>
+<p><img src="Conception/registration/JWT/../Images/JWT_fonctionnement.png" alt="" /></p>
+<ol>
+<li><strong>Authentification du client</strong> : Le client fournit ses identifiants (par exemple, nom d'utilisateur et mot de passe) au serveur d'authentification pour s'authentifier.</li>
+<li><strong>Création du JWT</strong>: Si l'authentification est réussie, le serveur d'authentification crée un JWT qui contient les informations d'identification du client.</li>
+<li><strong>Envoi du JWT au client</strong> : Le serveur d'authentification envoie le JWT au client, qui peut maintenant l'utiliser pour accéder aux ressources protégées sur le serveur de ressources.</li>
+<li><strong>Envoi du JWT au serveur</strong> : Le client envoie le JWT au serveur de ressources dans l'en-tête Authorization de la requête HTTP. </li>
+<li><strong>Vérification du JWT</strong> : Le serveur de ressources vérifie la signature du JWT. Si la signature est valide, le serveur de ressources extrait les informations d'identification du client à partir du JWT et vérifie que le client est autorisé à accéder à la ressource demandée. Si la vérification réussit, la ressource est renvoyée au client.</li>
+<li><strong>Renvoie de la ressource</strong> : Le serveur envoie au client la ressource demandée</li>
+</ol>
+<p>Nous avons donc deux étapes biens distincte, ce qui va impacté la rédaction (ou plutot le fonctionnement) de notre code.</p>
+<h2 id="evolution-de-larchitecture"><a class="header" href="#evolution-de-larchitecture">Evolution de l'architecture</a></h2>
+<ol>
+<li>Dans la première architecture :
+<ul>
+<li>L'authentification était assurée par la méthode <code>login()</code></li>
+<li>La chaine de sécurité vérifiée si l'utilisateur était contenu dans le <code>SecurityContext</code> et si aucune exception n'était levée, alors l'utilisateur pouvait accéder à <code>/restricted</code></li>
+</ul>
+</li>
+<li>Avec l'authentification via <em>Basic</em> :
+<ul>
+<li>Nous n'avons plus besoin de la méthode <code>login()</code></li>
+<li>L'utilisateur doit fournir ces identifiants à chaque appel</li>
+<li>La <em>Security Filter Chain</em> avec <code>BasicAuthenticationFilter</code> autorisée ou non l'accès à la ressource protégée.</li>
+</ul>
+</li>
+<li>Avec l'authentification via <em>JWT</em>
+<ul>
+<li>Nous avons besoin d'une méthode <code>login()</code> pour founir un JWT token</li>
+<li>Nous avons besoin de créer notre propre filtre pour vérifier si le token fourni par l'utilisateur est valide </li>
+</ul>
+</li>
+</ol>
+<h3 id="architecture-2"><a class="header" href="#architecture-2">Architecture</a></h3>
+<p><img src="Conception/registration/JWT/Images/../../Images/SpringSecurityArchiJWT.png" alt="" /></p>
+<h3 id="particularité"><a class="header" href="#particularité">Particularité</a></h3>
+<p>Il faut distinguer deux types de requêtes :</p>
+<ul>
+<li>Toutes les requêtes (e.g. <code>/restricted</code>)</li>
+<li>La requête de demande de connexion <code>/auth/login</code></li>
+</ul>
+<p><strong>Toutes requêtes</strong><br />
+Toutes les requêtes sont interceptées par la <em>Security Filter Chain</em>. Lorsque nous exécuterons une requête classique où l'utilisateur est connecté alors la requête passera dans le filtre <code>JWTAuthenticationFilter</code>.</p>
+<p>Ce filtre aura pour but de vérifier si le token fourni est valide. Dans le cas contraire, il reverra une exception avec <em>403 UNAUTHORIZE</em></p>
+<p><strong>Requête de connexion</strong><br />
+La requête de connexion <code>/auth/login</code> est aussi interceptée par la <em>Security Filter Chain</em>. Cependant, <code>JWTAuthenticationFilter</code> traite que les requête ayant un token JWT (nous allons le coder tel quel). Or, quand on souhaite se connecter nous n'avons de token JWT. </p>
+<p>Par conséquence, notre requête qui contient <em>email</em> et <em>password</em> arrive au niveau de la méthode <code>login()</code> qui va devoir appeler l'<code>AuthenticationManager</code> et rajouter le token JWT obtenu au <code>SecurityContext</code>.</p>
+<p>Donc le corp de la méthode <code>login()</code> ne sera pas vide, il devra générer un token JWT et le renvoyer au client</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="configuration-2"><a class="header" href="#configuration-2">Configuration</a></h1>
+<p>Nous devons ajouter des dépendances permettant créer et vérifier des JSON Web Tokens (JWTs)</p>
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;io.jsonwebtoken&lt;/groupId&gt;
+    &lt;artifactId&gt;jjwt-api&lt;/artifactId&gt;
+    &lt;version&gt;0.11.2&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;io.jsonwebtoken&lt;/groupId&gt;
+    &lt;artifactId&gt;jjwt-impl&lt;/artifactId&gt;
+    &lt;version&gt;0.11.2&lt;/version&gt;
+    &lt;scope&gt;runtime&lt;/scope&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;io.jsonwebtoken&lt;/groupId&gt;
+    &lt;artifactId&gt;jjwt-gson&lt;/artifactId&gt; &lt;!-- or jjwt-gson if Gson is preferred --&gt;
+    &lt;version&gt;0.11.1&lt;/version&gt;
+    &lt;scope&gt;runtime&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="generer-token"><a class="header" href="#generer-token">Generer token</a></h1>
+<p>Nous devons d'abord créer une classe permettant de générer un token JWT. Pour ce faire. Je m'appuis sur des exemples fournis sur internet.</p>
+<pre><code class="language-java">@Component
+public class JWTGenerator {
+
+    private static final int expireInMs = 300 * 1000;
+
+    private final static Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+
+    public String generate(Authentication authentication) {
+        String username = authentication.getName();
+
+        return Jwts.builder().setSubject(username).setIssuer(&quot;adrien&quot;).setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis() + expireInMs)).signWith(key).compact();
+    }
+
+    public boolean validate(String token) {
+        if (getUsername(token) != null &amp;&amp; isExpired(token)) {
+            return true;
+        }
+        return false;
+    }
+
+    public String getUsername(String token) {
+        Claims claims = getClaims(token);
+        return claims.getSubject();
+    }
+
+    public boolean isExpired(String token) {
+        Claims claims = getClaims(token);
+        return claims.getExpiration().after(new Date(System.currentTimeMillis()));
+    }
+
+    private Claims getClaims(String token) {
+        return Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody();
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="jwtauthenticationfilter"><a class="header" href="#jwtauthenticationfilter">JWTAuthenticationFilter</a></h1>
+<h2 id="créer-le-filtre"><a class="header" href="#créer-le-filtre">Créer le filtre</a></h2>
+<pre><code class="language-java">@Component
+class JwtAuthenticationFilter extends OncePerRequestFilter {
+    @Autowired
+    private JwtUtil jwtUtil;
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
+            FilterChain filterChain) throws ServletException, IOException {
+
+        // On récupère le token contenu dans le Header
+        final String authorizationHeader = httpServletRequest.getHeader(&quot;Authorization&quot;);
+        if (authorizationHeader == null || authorizationHeader.isEmpty() || !authorizationHeader.startsWith(&quot;Bearer&quot;)) {
+            // S'il n'existe pas alors on passe au filtre suivant
+            // C'est le cas pour le /login
+            filterChain.doFilter(httpServletRequest, httpServletResponse);
+            return;
+        }
+
+        final String token = authorizationHeader.split(&quot; &quot;)[1].trim();
+        if (!jwtUtil.validate(token)) {
+            // Si le token est invalide, alors on passe au filtre suivant
+            filterChain.doFilter(httpServletRequest, httpServletResponse);
+            return;
+        }
+
+        // Le token est valide
+        String username = jwtUtil.getUsername(token);
+        
+        // On va créer une Authentication
+        UsernamePasswordAuthenticationToken upassToken = new UsernamePasswordAuthenticationToken(username, null,
+                new ArrayList&lt;&gt;());
+        upassToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(httpServletRequest));
+
+        // On passe l'Authentication au Security Context
+        SecurityContextHolder.getContext().setAuthentication(upassToken);
+
+        // On appelle le filtre suivant
+        filterChain.doFilter(httpServletRequest, httpServletResponse);
+    }
+}
+</code></pre>
+<h2 id="ajouter-le-filtre-à-la-securityfilterchain"><a class="header" href="#ajouter-le-filtre-à-la-securityfilterchain">Ajouter le filtre à la SecurityFilterChain</a></h2>
+<p>On ajoute notre <code>JwtAuthenticationFilter</code> avant le filtre <code>UsernamePasswordAuthenticationFilter</code>.</p>
+<pre><code class="language-java">@Bean
+public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
+    httpSecurity...
+
+    httpSecurity.addFilterBefore(new JwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+
+    return httpSecurity.build();
+}
+</code></pre>
+<h2 id="cas-dune-requête-quelconque"><a class="header" href="#cas-dune-requête-quelconque">Cas d'une requête quelconque</a></h2>
+<p>Dans le cas d'une requête quelconque nous :</p>
+<ol>
+<li>Vérifions quelle contienne une Authorization</li>
+<li>Vérifions que le token fourni est valide</li>
+<li>Si tel est le cas, alors nous créons une <code>Authentication</code> que nous ajoutons au <code>SecurityContext</code></li>
+<li>Nous passons au filtre suivant</li>
+<li>Une fois tous les filtres exécutés, nous arriverons dans la methode exécutons la méthode appelée, par exemple <code>/restricted</code></li>
+</ol>
+<h2 id="cas-dune-requête-de-connexion"><a class="header" href="#cas-dune-requête-de-connexion">Cas d'une requête de connexion</a></h2>
+<p>Dans le cas d'une requête <code>/auth/login</code> nous n'avons pas de token donc nous rentrons dans le premier <code>if</code> ce qui va exécuter les filtres suivants.</p>
+<p>Une fois tous les filtres exécutés, nous arriverons dans la methode <code>login()</code> où nous devrons :</p>
+<ul>
+<li>Créer un objet de type <code>Authentication</code></li>
+<li>Appeler le <code>AuthenticationManager</code></li>
+<li>Ajouter l'<code>AuthenticationManager</code> au <code>SecurityContext</code></li>
+<li>Et, créer et renvoyer le JWT Token</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="contrôleur-2"><a class="header" href="#contrôleur-2">Contrôleur</a></h1>
+<h2 id="demande-de-connexion"><a class="header" href="#demande-de-connexion">Demande de connexion</a></h2>
+<p>Afin d'accepter le nouveau système d'authentification nous devons mettre à jour notre contrôleur. Nous en profitons également pour créer un ResponseModel qui sera renvoyé lors de la demande de connexion.</p>
+<pre><code class="language-java">public class LoginResponseModel {
+    private String accessToken;
+    private String tokenType = &quot;Bearer &quot;;
+
+    public LoginResponseModel(String accessToken) {
+        this.accessToken = accessToken;
+    }
+}
+</code></pre>
+<pre><code class="language-java">@PostMapping(&quot;/auth/login&quot;)
+public ResponseEntity&lt;LoginResponseModel&gt; login(@RequestBody LoginRequestModel loginDTO) {
+    try {
+        /* Créer un objet de type Authentication */
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(loginDTO.getEmail(),
+                loginDTO.getPassword());
+
+        /* Appeler l'authenticationManager en passant l'objet précédent */        
+        Authentication auth = authenticationManager.authenticate(token);
+
+        /* Ajouter l'authentification au SecurityContext */
+        SecurityContextHolder.getContext().setAuthentication(auth);
+
+        /* Création du JWT token */
+        String JWTtoken = jwtGenerator.generateToken(auth);
+
+        /* Renvoie du JWT token au client */
+        return new ResponseEntity&lt;&gt;(new LoginResponseModel(JWTtoken), HttpStatus.OK);
+    } catch (AuthenticationException e) {
+        return new ResponseEntity&lt;&gt;(null, HttpStatus.FORBIDDEN);
+    }
+}
+</code></pre>
+<h2 id="page-avec-restriction-1"><a class="header" href="#page-avec-restriction-1">Page avec restriction</a></h2>
+<p>Il n'y a aucune indication dans le Contrôleur qui informe que la page necessite une authentification. Pour pouvoir accéder à cette page l'utilisateur devra fournir le token retourné par <code>login()</code>, et la <code>JWTFilterChain</code> s'assuera de sa validité</p>
+<pre><code class="language-java">@GetMapping(&quot;/restricted&quot;)
+public String retricted() {
+    return &quot;Welcome to Restricted page&quot;;
+}
+</code></pre>
+<h2 id="diagramme-de-séquence-3"><a class="header" href="#diagramme-de-séquence-3">Diagramme de séquence</a></h2>
+<p><img src="Conception/registration/JWT/Images/../../Images/JWT_fonctionnement.png" alt="" /></p>
+<h3 id="requête-de-connexion"><a class="header" href="#requête-de-connexion">Requête de connexion</a></h3>
+<p>Dans le cas du <code>/login</code>, la requête est intercepté par la <em>Security Filter Chain</em> et à un moment arrive dans le <code>JWTFilterChain</code> mais est bloqué par le <code>if</code> qui vérifie si un token existe (ce qui n'est pas le cas). Donc on exécute les filtres suivants (non représentés). Et on arrive enfin à la méthode <code>CustomerController#login()</code> dont nous avons déjà représenté le diagramme de séquence.</p>
+<h3 id="autres-requêtes"><a class="header" href="#autres-requêtes">Autres requêtes</a></h3>
+<p>Dans le cas d'une autre requête (e.g <code>/restricted</code>) la requête est intercepté par la <em>Security Filter Chain</em> et à un moment arrive dans le <code>JWTFilterChain</code>. </p>
+<ol>
+<li>Si le token est invalise, alors une exception est levée</li>
+<li>Si le token est valide, alors nous ajoutons l'utilisateur au <code>SecurityContext</code>, ce qui autorise l'accès à la ressource</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="conclusion-1"><a class="header" href="#conclusion-1">Conclusion</a></h1>
+<p>L'authentification n'est pas une partie simple à comprendre. Nous revonnons ici sur les principaux points mis en application.</p>
+<h2 id="des-requêtes-interceptées"><a class="header" href="#des-requêtes-interceptées">Des requêtes interceptées</a></h2>
+<p>Toutes les requêtes sont interceptées par la <em>Security Filter Chain</em>. Ainsi, si on souhaite accéder à une ressource protégée (e.g. <code>/restricted</code>)</p>
+<ol>
+<li>La <em>Security Filter Chain</em> intercepte la requête</li>
+<li>Si aucune expception n'est levée, c'est-à-dire que l'utilisateur était bien authentifié</li>
+<li>Alors la méthode représentant l'appel (ici <code>restricted()</code>) est invoquée et retourne la ressource.</li>
+</ol>
+<h2 id="différentes-authentifications"><a class="header" href="#différentes-authentifications">Différentes authentifications</a></h2>
+<p>Nous avons :</p>
+<ul>
+<li>Créer notre propre système d'authentification afin d'introduire la notion</li>
+<li>Puis nous avons vu l'authentification <em>Basic</em> qui permet de rentrer dans le détail de la <em>Security Filter Chain</em></li>
+<li>Pour au final, créer notre propre filtre afin de réaliser l'authentification JWT</li>
+</ul>
+<p><strong>Authentification notion</strong>
+<img src="Conception/registration/Images/SpringSecurityArchi.png" alt="" /></p>
+<p><strong>Authentification Basic</strong>
+<img src="Conception/registration/Images/SpringSecurityArchiBasic.png" alt="" /></p>
+<p><strong>Authentification JWT</strong>
+<img src="Conception/registration/Images/SpringSecurityArchiJWT.png" alt="" /></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="gateway"><a class="header" href="#gateway">Gateway</a></h1>
+<p>Nos services sont déployés sur plusieurs serveur et accessibles via le :</p>
+<ul>
+<li>port <code>:8081</code> pour <em>bankaccount</em></li>
+<li>port <code>:8083</code> pout <em>registration</em></li>
+</ul>
+<p>Néanmoins il serait intéressant de pour acceder à toutes les APIs en utilisant le même port, par exemple :</p>
+<ul>
+<li><code>:8080/account/create</code> au lieu de <code>:8081/account/create</code></li>
+<li><code>:8080/auth/login</code> au lieu de <code>8083/auth/login</code></li>
+</ul>
+<p>Ainsi la Gateway est un serveur qu'on va déployé et qui va avoir pour rôle de rediriger le traffic vers le bon port. Elle permet d'offrir un accès simplifié. </p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="configuration-3"><a class="header" href="#configuration-3">Configuration</a></h1>
+<h2 id="pom-2"><a class="header" href="#pom-2">Pom</a></h2>
+<pre><code class="language-xml">&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+	&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+	&lt;parent&gt;
+		&lt;groupId&gt;uqac.groupe6&lt;/groupId&gt;
+		&lt;artifactId&gt;prixbanque&lt;/artifactId&gt;
+		&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+	&lt;/parent&gt;
+	&lt;artifactId&gt;gateway&lt;/artifactId&gt;
+
+	&lt;dependencies&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-cloud-starter-gateway&lt;/artifactId&gt;
+		&lt;/dependency&gt;
+	&lt;/dependencies&gt;
+&lt;/project&gt;
+</code></pre>
+<h2 id="applicationproperties-2"><a class="header" href="#applicationproperties-2">Application.properties</a></h2>
+<p>Dans le fichier <code>src/main/resources/application.properties</code></p>
+<pre><code class="language-properties">spring.main.web-application-type=reactive
+</code></pre>
+<h2 id="applicationyaml"><a class="header" href="#applicationyaml">Application.yaml</a></h2>
+<p><strong>Note</strong><br />
+On aurait pu mettre la configuration suivante directement dans <code>application.properties</code>. </p>
+<p>Nous configurons les redirections à faire sur notre serveur <em>gateway</em></p>
+<pre><code class="language-yml">server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: bankAccountModule
+        uri: http://localhost:8081/
+        predicates:
+        - Path=/account/**
+      - id: authentificationModule
+        uri: http://localhost:8083/
+        predicates:
+        - Path=/customer/**
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="tester-1"><a class="header" href="#tester-1">Tester</a></h1>
+<p>Nous n'avons rien de plus à écrire, tout se fait au travers des fichiers de configuration.</p>
+<p>Maintenant nous pouvons remplacer le port de tous nos tests par <code>:8080</code>.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+    </body>
+</html>

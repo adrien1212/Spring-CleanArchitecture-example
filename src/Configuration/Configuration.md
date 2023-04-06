@@ -1,12 +1,10 @@
 # Configuration en MicroService
-La configuration en microservice necessite quelque adaptation dans la configuration de notre projet. Nous y utiliserons :
-- Maven comme gestionnaire de dépendances
-- Spring et ses librairies comme framework de développement
+Nous utiliserons Maven pour gérer nos services et les librairies externes utilisées.
 
 ## Découpage du projet
-Comme evoqué quand le chapitre précédent nous allons déployer 4 microservices. Cela signifie donc 4 projets Maven indépendant. Cependant afin de faciliter l'utilisation des librairies nous allons regrouper ces 4 projets sous un projet parent `prixbanque`
+Comme evoqué quand le chapitre précédent nous allons déployer 3 microservices. Cela signifie donc 3 projets Maven indépendants. Cependant afin de faciliter l'utilisation des librairies nous allons regrouper ces 3 projets sous un projet parent `prixbanque`
 
-## POM parant
+## POM parent
 ### Propriétés
 ```XML
 <properties>
@@ -19,39 +17,33 @@ Comme evoqué quand le chapitre précédent nous allons déployer 4 microservice
 ```
 
 ### Microservice
-Le pom parent déclare également les 4 microservices que nous allons développer
+Le pom parent déclare également les 3 microservices que nous allons développer ultérieurement.
 
 ```XML
 <modules>
-    <module>banktransfert</module>
     <module>bankaccount</module>
     <module>registration</module>
     <module>gateway</module>
 </modules>
 ```
 
-On doit également ajouter ces modules comme dépendance du project. Ainsi dans le block `<dependencyManagement></dependencyManagement>` nous rajoutons
+On doit également ajouter ces modules comme dépendance du projet. Ainsi dans le bloc `<dependencyManagement></dependencyManagement>` nous rajoutons
 
 ```XML
 <!-- MicroServices-->
 <dependency>
-    <groupId>uqac.groupe6</groupId>
+    <groupId>adriencaubel.fr</groupId>
     <artifactId>registration</artifactId>
     <version>${microservice.version}</version>
 </dependency>
 <dependency>
-    <groupId>uqac.groupe6</groupId>
+    <groupId>adriencaubel.fr</groupId>
     <artifactId>connection</artifactId>
     <version>${microservice.version}</version>
 </dependency>
 <dependency>
-    <groupId>uqac.groupe6</groupId>
+    <groupId>adriencaubel.fr</groupId>
     <artifactId>banktransfert</artifactId>
-    <version>${microservice.version}</version>
-</dependency>
-<dependency>
-    <groupId>uqac.groupe6</groupId>
-    <artifactId>bankaccount</artifactId>
     <version>${microservice.version}</version>
 </dependency>
 ```

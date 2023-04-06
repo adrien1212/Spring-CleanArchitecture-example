@@ -1,0 +1,248 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Architecture Spring Security - Créer une application d&#x27;entreprise avec Spring</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../../favicon.svg">
+        <link rel="shortcut icon" href="../../../favicon.png">
+        <link rel="stylesheet" href="../../../css/variables.css">
+        <link rel="stylesheet" href="../../../css/general.css">
+        <link rel="stylesheet" href="../../../css/chrome.css">
+        <link rel="stylesheet" href="../../../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../../highlight.css">
+        <link rel="stylesheet" href="../../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../../Introduction/Introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Architecture</li><li class="chapter-item expanded "><a href="../../../Architecture/Generale.html"><strong aria-hidden="true">2.</strong> Architecture Générale</a></li><li class="chapter-item expanded "><a href="../../../Configuration/Configuration.html"><strong aria-hidden="true">3.</strong> Configuration MicroServices</a></li><li class="chapter-item expanded "><a href="../../../Architecture/Microservice.html"><strong aria-hidden="true">4.</strong> Architecture Détaillée</a></li><li class="chapter-item expanded affix "><li class="part-title">Compte bancaire</li><li class="chapter-item expanded "><a href="../../../Conception/bankaccount/Introduction.html"><strong aria-hidden="true">5.</strong> BankAccount</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Conception/bankaccount/Configuration.html"><strong aria-hidden="true">5.1.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="../../../Conception/bankaccount/Architecture.html"><strong aria-hidden="true">5.2.</strong> Architecture</a></li><li class="chapter-item expanded "><a href="../../../Conception/bankaccount/Domaine.html"><strong aria-hidden="true">5.3.</strong> Domaine</a></li><li class="chapter-item expanded "><a href="../../../Conception/bankaccount/Service.html"><strong aria-hidden="true">5.4.</strong> Service</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Conception/bankaccount/Service/DTO.html"><strong aria-hidden="true">5.4.1.</strong> DTO</a></li><li class="chapter-item expanded "><a href="../../../Conception/bankaccount/Service/BDD.html"><strong aria-hidden="true">5.4.2.</strong> Base de données</a></li><li class="chapter-item expanded "><a href="../../../Conception/bankaccount/Service/Business.html"><strong aria-hidden="true">5.4.3.</strong> Service Métier</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Conception/bankaccount/Controller.html"><strong aria-hidden="true">5.5.</strong> Contrôleur</a></li><li class="chapter-item expanded "><a href="../../../Conception/bankaccount/Tester.html"><strong aria-hidden="true">5.6.</strong> Tester</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Authentification</li><li class="chapter-item expanded "><a href="../../../Conception/registration/Introduction.html"><strong aria-hidden="true">6.</strong> Authentification</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Conception/registration/Configuration.html"><strong aria-hidden="true">6.1.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="../../../Conception/registration/Architecture.html"><strong aria-hidden="true">6.2.</strong> Architecture</a></li><li class="chapter-item expanded "><a href="../../../Conception/registration/Domaine.html"><strong aria-hidden="true">6.3.</strong> Domaine</a></li><li class="chapter-item expanded "><a href="../../../Conception/registration/Service.html"><strong aria-hidden="true">6.4.</strong> Service</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Conception/registration/Service/DTO.html"><strong aria-hidden="true">6.4.1.</strong> DTO</a></li><li class="chapter-item expanded "><a href="../../../Conception/registration/Service/BDD.html"><strong aria-hidden="true">6.4.2.</strong> Base de données</a></li><li class="chapter-item expanded "><a href="../../../Conception/registration/Service/Business.html"><strong aria-hidden="true">6.4.3.</strong> Service Métier</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Conception/registration/Security/Securite.html"><strong aria-hidden="true">6.5.</strong> Sécurité</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Conception/registration/Security/SpringSecurityArchitecture.html" class="active"><strong aria-hidden="true">6.5.1.</strong> Architecture Spring Security</a></li><li class="chapter-item expanded "><a href="../../../Conception/registration/Security/SpringConfiguration.html"><strong aria-hidden="true">6.5.2.</strong> Implémentation Architecture</a></li><li class="chapter-item expanded "><a href="../../../Conception/registration/Security/UserDetailService.html"><strong aria-hidden="true">6.5.3.</strong> Notion d'utilisateur Spring</a></li><li class="chapter-item expanded "><a href="../../../Conception/registration/Controller.html"><strong aria-hidden="true">6.5.4.</strong> Contrôleur</a></li><li class="chapter-item expanded "><a href="../../../Conception/registration/Tester.html"><strong aria-hidden="true">6.5.5.</strong> Tester</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Conception/registration/Basic/Basic.html"><strong aria-hidden="true">6.6.</strong> Authentification Basic</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Conception/registration/Basic/SecurityConfig.html"><strong aria-hidden="true">6.6.1.</strong> SecurityConfig</a></li><li class="chapter-item expanded "><a href="../../../Conception/registration/Basic/Controleur.html"><strong aria-hidden="true">6.6.2.</strong> Controleur</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Conception/registration/JWT/JWT.html"><strong aria-hidden="true">6.7.</strong> Authentification JWT</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Conception/registration/JWT/Configuration.html"><strong aria-hidden="true">6.7.1.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="../../../Conception/registration/JWT/generate.html"><strong aria-hidden="true">6.7.2.</strong> Generer token</a></li><li class="chapter-item expanded "><a href="../../../Conception/registration/JWT/filter.html"><strong aria-hidden="true">6.7.3.</strong> JWTAuthenticationFilter</a></li><li class="chapter-item expanded "><a href="../../../Conception/registration/JWT/Controller.html"><strong aria-hidden="true">6.7.4.</strong> Controleur</a></li></ol></li><li class="chapter-item expanded "><a href="../../../Conception/registration/Conclusion.html"><strong aria-hidden="true">6.8.</strong> Conclusion</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Gateway</li><li class="chapter-item expanded "><a href="../../../Conception/gateway/Introduction.html"><strong aria-hidden="true">7.</strong> Gateway</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../Conception/gateway/Configuration.html"><strong aria-hidden="true">7.1.</strong> Configuration</a></li><li class="chapter-item expanded "><a href="../../../Conception/gateway/Tester.html"><strong aria-hidden="true">7.2.</strong> Tester</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Créer une application d&#x27;entreprise avec Spring</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="architecture-spring-security"><a class="header" href="#architecture-spring-security">Architecture Spring Security</a></h1>
+<p>Avant de coder la mise en place de la sécurité dans notre application, il est important de comprendre l'architecture mise en place par Spring pour réaliser l'authentification.</p>
+<h2 id="comment-accéder-à-une-ressource-privée"><a class="header" href="#comment-accéder-à-une-ressource-privée">Comment accéder à une ressource privée</a></h2>
+<p>L'authentification permet de restreindre l'accès une ressource qu'aux utilisateurs authentifiés. Pour ce faire Spring utilise le système suivant</p>
+<p><img src="../Images/fonctionnementspringsecurity.png" alt="" /></p>
+<ul>
+<li>Lorsqu'une <em>requête</em> arrive, elle est <strong>interceptée</strong> pour authentifiée ou vérifier si l'utilisateur est authentifiée.
+<ul>
+<li>Si l'utilisateur ne réussit pas cette étape, alors une exception est levée par le bloc d'authentification. Par conséquence, le Contrôleur n'est pas invoqué, l'utilisateur n'accède pas à la ressource.</li>
+<li>Si l'utilisateur est correctement authentifié, alors l'authentification déclenche l'appel au Contrôleur qui va retourner le contenu demandé.</li>
+</ul>
+</li>
+</ul>
+<h3 id="détail-du-bloc-dauthentification"><a class="header" href="#détail-du-bloc-dauthentification">Détail du bloc d'authentification</a></h3>
+<p>Après avoir décrit le fonctionnement (reussite/echec) regardons en détail le fonctionnement du bloc d'authentification. C'est la partie la plus complexe, mais sa compréhension est priomardiale.</p>
+<p><img src="../Images/fonctionnementspringsecurity2.png" alt="" /></p>
+<ol>
+<li>Lorsque la requête arrive elle est tout d'abord intercepté par la <em>Security Filter chain</em>. C'est une série de filtre qui vont vérifier si l'utilisateur peut accéder à la ressource.</li>
+<li>Parmi ces filtres, un permet de vérifier l'authentification. Pour ce faire il va appeler un <code>AuthenticationManager</code> en lui fournissant un objet de type <code>UsernamePasswordAuthenticationToken</code> construit via la requête.</li>
+<li>L'<code>AuthenticationManager</code> va appeler un <code>Provider</code> (e.g. <code>AuthenticationProvider</code>) qui retrouver l'utilisateur (chez nous en base de donnée). Pour ce faire, on doit lui injecté lors de son initialisation un <code>PasswordEncoder</code> et un <code>UserDetailService</code>.</li>
+<li>Finalement si l'utilisateur est bien présent en base de données, une <code>Authentification</code> est retournée. Elle est stockée dans le <code>SecurityContext</code></li>
+<li>Et le dernier filtre passe la main au Contrôleur</li>
+</ol>
+<h2 id="définitions"><a class="header" href="#définitions">Définitions</a></h2>
+<h3 id="security-filter-chain"><a class="header" href="#security-filter-chain">Security Filter Chain</a></h3>
+<p>Lorsque la requête est envoyé par l'utilisateur elle est interceptée par la <em>Security Filter Chain</em> qui est composée d'une série de filtre.</p>
+<h3 id="lauthentication-manager"><a class="header" href="#lauthentication-manager">L'Authentication Manager</a></h3>
+<blockquote>
+<p>Il crée un Authorization ou lève une exception.</p>
+</blockquote>
+<p>Si l'authentification n'est pas réussite une exception est levée, par conséquence le contrôleur n'est pas appelé et la ressource n'est pas accessible.</p>
+<pre><code class="language-java">public interface AuthenticationManager {
+    Authentication authenticate(Authentication authentication) throws AuthenticationException;
+}
+</code></pre>
+<p>. Cette interface est composée d'une seule méthode qui prend en paramètre un <code>Authentication</code> fournie est valide :</p>
+<ul>
+<li>Renvoie une <code>Authentication</code> (normalement avec <code>authenticated=true</code>) si elle est confirmée</li>
+<li>Lancer l'exception <code>AuthenticationException</code> si elle n'a pas pu être vérifiée</li>
+</ul>
+<p>A noter, que notre requête doit donc être transformé en un objet de type <code>Authentication</code>, par exemple <code>UsernamePasswordAuthenticationToken</code> pour pouvoir être passé à l'<code>AuthenticationManager</code>. </p>
+<h3 id="daoauthenticationprovider"><a class="header" href="#daoauthenticationprovider">DAOAuthenticationProvider</a></h3>
+<blockquote>
+<p>Permet d'authentifier via un username et un password</p>
+</blockquote>
+<p>Pour fonctionner il necessite qu'on lui injecte lors de sa construction un <code>PasswordEncoder</code> ainsi qu'un <code>UserDetailService</code>.</p>
+<h3 id="userdetailservice"><a class="header" href="#userdetailservice">UserDetailService</a></h3>
+<blockquote>
+<p>Charge un utilisateur (nous en base de données) et le retourne sous la forme d'un <code>UserDetails</code></p>
+</blockquote>
+<pre><code class="language-java">public interface UserDetailService {
+    UserDetails loadUserByUsername(String username) throws UsernameNotFoundException;
+}
+</code></pre>
+<p>Pour pouvoir récupérer un utilisateur en base de données, il va falloir lui &quot;fournir l'accés&quot; et coder nous même le corps de la fonction. En d'autre terme, cette fonction va être implémenté dans notre ``CustomerServiceImpl<code>où elle va appeler la gateway puis transformer l'entité domaine en</code>UserDetails`.</p>
+<p><img src="../Images/userdetailservice.png" alt="" /></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../../Conception/registration/Security/Securite.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../../../Conception/registration/Security/SpringConfiguration.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../../Conception/registration/Security/Securite.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../../../Conception/registration/Security/SpringConfiguration.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
