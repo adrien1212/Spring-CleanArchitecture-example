@@ -43,6 +43,7 @@
      -  [Generer token](Conception/registration/JWT/generate.md)
      -  [JWTAuthenticationFilter](Conception/registration/JWT/filter.md)
      -  [Controleur](Conception/registration/JWT/Controller.md)
+  - [Plusieur AuthenticationProvider](Conception/registration/Provider/provider.md)
   - [Conclusion](Conception/registration/Conclusion.md)
 # Gateway
 - [Gateway](Conception/gateway/Introduction.md)
